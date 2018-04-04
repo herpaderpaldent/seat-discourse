@@ -1,6 +1,6 @@
 <?php
 
-namespace Spinen\Discourse\Controllers;
+namespace Herpaderpaldent\Seat\SeatDiscourse\Controllers;
 
 use Cviebrock\DiscoursePHP\SSOHelper;
 use Exception;

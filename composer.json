@@ -1,48 +1,51 @@
 {
-    "name": "spinen/laravel-discourse-sso",
-    "description": "Integrate Discourse SSO into Laravel.",
+    "name": "herpaderpaldent/seat-discourse",
+    "description": "Integrate Discourse SSO and API into SeAT.",
     "keywords": [
         "discourse",
         "laravel",
         "library",
         "single sign on",
         "spinen",
-        "sso"
+        "sso",
+        "seat"
     ],
     "license": "MIT",
     "authors": [
         {
-            "name": "Jimmy Puckett",
-            "email": "jimmy.puckett@spinen.com"
+            "name": "Felix Huber",
+            "email": "huberfel@students.zhaw.ch"
         }
     ],
     "require": {
         "php": ">=5.5.9",
         "cviebrock/discourse-php": "^0.9.3",
         "illuminate/routing": "5.2.*|5.3.*|5.4.*|5.5.*",
-        "illuminate/support": "5.2.*|5.3.*|5.4.*|5.5.*"
+        "illuminate/support": "5.2.*|5.3.*|5.4.*|5.5.*",
+        "richp10/discourse-api-php": "^1.2"
     },
     "require-dev": {
         "mockery/mockery": "^0.9.1",
         "phpunit/phpunit": "~4.0|~5.0",
         "psy/psysh": "^0.5.1",
         "satooshi/php-coveralls": "^0.6.1|^1",
-        "symfony/var-dumper": "~2.7|~3.0"
+        "symfony/var-dumper": "~2.7|~3.0",
+        "richp10/discourse-api-php": "^1.2"
     },
     "autoload": {
         "psr-4": {
-            "Spinen\\Discourse\\": "src"
+            "Herpaderpaldent\\Seat\\SeatDiscourse\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Spinen\\Discourse\\": "tests"
+            "Herpaderpaldent\\Seat\\SeatDiscourse\\": "src/"
         }
     },
     "extra": {
         "laravel": {
             "providers": [
-                "Spinen\\Discourse\\SsoServiceProvider"
+                "Herpaderpaldent\\Seat\\SeatDiscourse\\SsoServiceProvider"
             ]
         }
     },

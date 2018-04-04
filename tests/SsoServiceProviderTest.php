@@ -1,6 +1,6 @@
 <?php
 
-namespace Spinen\Discourse;
+namespace Herpaderpaldent\Seat\SeatDiscourse;
 
 use ArrayAccess as Application;
 use Illuminate\Contracts\Config\Repository as Config;
@@ -46,7 +46,7 @@ class SsoServiceProviderTest extends TestCase
 
         $this->setUpMocks();
 
-        $this->service_provider = new SsoServiceProvider($this->application_mock);
+        $this->service_provider = new SeatDiscourseServiceProvider($this->application_mock);
     }
 
     private function setUpMocks()
@@ -61,7 +61,7 @@ class SsoServiceProviderTest extends TestCase
      */
     public function it_can_be_constructed()
     {
-        $this->assertInstanceOf(SsoServiceProvider::class, $this->service_provider);
+        $this->assertInstanceOf(SeatDiscourseServiceProvider::class, $this->service_provider);
     }
 
     /**

@@ -1,16 +1,13 @@
 <?php
 
-namespace Spinen\Discourse;
+namespace Herpaderpaldent\Seat\SeatDiscourse;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Contracts\Routing\Registrar as Router;
+use Illuminate\Auth\Events\Registered as RegisterEvent;
 
-/**
- * Class SsoServiceProvider
- *
- * @package Spinen\GarbageMan
- */
-class SsoServiceProvider extends ServiceProvider
+
+class SeatDiscourseServiceProvider extends ServiceProvider
 {
     /**
      * Perform post-registration booting of services.
@@ -21,7 +18,7 @@ class SsoServiceProvider extends ServiceProvider
     {
         $this->app['router']->group(["middleware" => ["web", "auth"]], function (Router $router) {
             $router->get($this->app['config']->get('services.discourse.route'), [
-                'uses' => 'Spinen\Discourse\Controllers\SsoController@login',
+                'uses' => 'Herpaderpaldent\Seat\SeatDiscourse\Controllers\SsoController@login',
                 'as'   => 'sso.login',
             ]);
         });
@@ -35,5 +32,14 @@ class SsoServiceProvider extends ServiceProvider
     public function register()
     {
         //
+    }
+
+    public function add_events()
+    {
+
+        // Internal Authentication Events
+        $this->app->events->listen(RegisterEvent::class, Register::class);
+
+
     }
 }
