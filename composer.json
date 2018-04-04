@@ -10,6 +10,7 @@
         "sso",
         "seat"
     ],
+    "type":"seat-plugin",
     "license": "MIT",
     "authors": [
         {
