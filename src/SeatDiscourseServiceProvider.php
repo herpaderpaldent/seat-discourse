@@ -2,6 +2,7 @@
 
 namespace Herpaderpaldent\Seat\SeatDiscourse;
 
+use Herpaderpaldent\Seat\SeatDiscourse\Events\Register;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Contracts\Routing\Registrar as Router;
 use Illuminate\Auth\Events\Registered as RegisterEvent;
@@ -16,6 +17,9 @@ class SeatDiscourseServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        $this->addCommands();
+        $this->addEvents();
+
         $this->app['router']->group(["middleware" => ["web", "auth"]], function (Router $router) {
             $router->get($this->app['config']->get('services.discourse.route'), [
                 'uses' => 'Herpaderpaldent\Seat\SeatDiscourse\Controllers\SsoController@login',
@@ -34,11 +38,19 @@ class SeatDiscourseServiceProvider extends ServiceProvider
         //
     }
 
-    public function add_events()
+    public function addEvents()
     {
 
         // Internal Authentication Events
         $this->app->events->listen(RegisterEvent::class, Register::class);
+
+    }
+    public function addCommands()
+    {
+
+        $this->commands([
+            //DiscourseGroupsUpdate::class,
+        ]);
 
 
     }

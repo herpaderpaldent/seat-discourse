@@ -47,12 +47,17 @@ class SsoController extends Controller
      * @param Config $config
      * @param SSOHelper $sso
      */
-    public function __construct(Config $config, SSOHelper $sso)
+    /*public function __construct(Config $config, SSOHelper $sso)
     {
         $this->loadConfigs($config);
 
         $this->sso = $sso->setSecret($this->config->get('secret'));
+    }*/
+    public function __construct(SSOHelper $sso)
+    {
+        $this->sso = $sso->setSecret(getenv('DISCOURSE_SECRET'));
     }
+
 
     /**
      * Build out the extra parameters to send to Discourse
@@ -61,12 +66,51 @@ class SsoController extends Controller
      */
     protected function buildExtraParameters()
     {
-        return $this->config->get('user')
+        /*return $this->config->get('user')
                             ->except(['access', 'email', 'external_id'])
                             ->reject([$this, 'nullProperty'])
                             ->map([$this, 'parseUserValue'])
                             ->map([$this, 'castBooleansToString'])
                             ->toArray();
+        */
+        return [
+
+            // Groups to make sure that the user is part of in a comma-separated string
+            // NOTE: Groups cannot have spaces in their names & must already exist in Discourse
+            'add_groups' => null,
+
+            // Boolean for user a Discourse admin, leave null to ignore
+            //'admin' => null,
+
+            // Full path to user's avatar image
+            'avatar_url' => img('Character',$this->user->id,128,null,false),
+
+            // The avatar is cached, so this triggers an update
+            'avatar_force_update' => false,
+
+            // Content of the user's bio
+            //'bio' => null,
+
+            // Boolean for user a Discourse admin, leave null to ignore
+            //'moderator' => null,
+
+            // Full name on Discourse if the user is new or
+            // if SiteSetting.sso_overrides_name is set
+            'name' => $this->user->name,
+
+            // Groups to make sure that the user is *NOT* part of in a comma-separated string
+            // NOTE: Groups cannot have spaces in their names & must already exist in Discourse
+            // There is not a way to specify the exact list of groups that a user is in, so
+            // you may want to send the inverse of the 'add_groups'
+            'remove_groups' => null,
+
+            // If the email has not been verified, set this to true
+            'require_activation' => false,
+
+            // username on Discourse if the user is new or
+            // if SiteSetting.sso_overrides_username is set
+            'username' => $this->user->name,
+        ];
     }
 
     /**
@@ -95,11 +139,11 @@ class SsoController extends Controller
      *
      * @param Config $config
      */
-    protected function loadConfigs(Config $config)
+    /*protected function loadConfigs(Config $config)
     {
         $this->config = collect($config->get('services.discourse'));
         $this->config->put('user', collect($this->config->get('user')));
-    }
+    }*/
 
     /**
      * Process the SSO login request from Discourse
@@ -111,12 +155,12 @@ class SsoController extends Controller
     public function login(Request $request)
     {
         $this->user = $request->user();
-        $access = $this->config->get('user')
+        /*$access = $this->config->get('user')
                                ->get('access', null);
 
         if (! is_null($access) && ! $this->parseUserValue($access)) {
             abort(403); //Forbidden
-        }
+        }*/
 
         if (! ($this->sso->validatePayload($payload = $request->get('sso'), $request->get('sig')))) {
             abort(403); //Forbidden
@@ -124,14 +168,16 @@ class SsoController extends Controller
 
         $query = $this->sso->getSignInString(
             $this->sso->getNonce($payload),
-            $this->parseUserValue($this->config->get('user')
+            $this->user->id,
+            $this->user->email,
+            /*$this->parseUserValue($this->config->get('user')
                                                ->get('external_id')),
             $this->parseUserValue($this->config->get('user')
-                                               ->get('email')),
+                                               ->get('email')),*/
             $this->buildExtraParameters()
         );
 
-        return redirect(str_finish($this->config->get('url'), '/').'session/sso_login?'.$query);
+        return redirect(str_finish(getenv('DISCOURSE_URL'), '/').'session/sso_login?'.$query);
     }
 
     /**
