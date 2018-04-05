@@ -46,7 +46,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Herpaderpaldent\\Seat\\SeatDiscourse\\SsoServiceProvider"
+                "Herpaderpaldent\\Seat\\SeatDiscourse\\SeatDiscourseServiceProvider"
             ]
         }
     },
