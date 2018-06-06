@@ -2,6 +2,7 @@
 
 namespace Herpaderpaldent\Seat\SeatDiscourse;
 
+use Herpaderpaldent\Seat\SeatDiscourse\Commands\SyncRolesWithDiscourse;
 use Herpaderpaldent\Seat\SeatDiscourse\Events\Register;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Contracts\Routing\Registrar as Router;
@@ -42,14 +43,14 @@ class SeatDiscourseServiceProvider extends ServiceProvider
     {
 
         // Internal Authentication Events
-        $this->app->events->listen(RegisterEvent::class, Register::class);
+        //$this->app->events->listen(RegisterEvent::class, Register::class);
 
     }
     public function addCommands()
     {
 
         $this->commands([
-            //DiscourseGroupsUpdate::class,
+            SyncRolesWithDiscourse::class,
         ]);
 
 

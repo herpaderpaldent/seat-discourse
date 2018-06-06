@@ -6,10 +6,9 @@ topics based on roles in SeAT.
 
 ## Prerequisite
 
-There are two dependencies.
+There are is one dependency.
 
 * ["cviebrock/discourse-php": "^0.9.3"](https://github.com/cviebrock/discourse-php)
-* ["richp10/discourse-api-php": "^1.2"](https://github.com/richp10/discourse-api-php)
 
 ## Install
 
@@ -17,6 +16,19 @@ Install Discourse SSO for Laravel:
 
 ```bash
     $ composer require herpaderpaldent/seat-discourse
+```
+
+add following to the `.env`:
+
+
+
+* DISCOURSE_URL (do not add a trailing slash!)
+* DISCOURSE_API_USERNAME the username of the admin account you generated the API key with
+* DISCOURSE_API_KEY the key you just generated
+```
+DISCOURSE_URL=https://discourse.example.com
+DISCOURSE_API_USERNAME=username
+DISCOURSE_API_KEY=key
 ```
 
 ### For SeAT 3.0, you are done with the Install
@@ -33,3 +45,5 @@ The package uses the auto registration feature
 * support for [`custom_fields`](https://meta.discourse.org/t/custom-user-fields-for-plugins/14956)
 * failed login redirect
 * `return_paths` support
+
+#
