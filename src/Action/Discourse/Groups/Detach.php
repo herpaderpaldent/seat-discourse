@@ -27,16 +27,17 @@ class Detach
             $rolenames_array = $roles->map(function($role) {return $role->title;})->toArray();
 
             //Group minus Roles, what is left should be deleted
-            $groups->each(function ($group) use ($rolenames_array) {
+            $groups_deleted = collect();
+            $groups->each(function ($group) use ($rolenames_array,$groups_deleted) {
                 if(!in_array($group->name, $rolenames_array) ){
+                    $groups_deleted->push($group->name);
                     $this->delete->execute($group->id);
                 };
             });
 
-            $groupnames = $groups->map( function ($group) {return $group->name;});
-            $rolenames = $roles->map(function($role) {return $role->title;});
 
-            return "Groups deleted " . $rolenames->diff($groupnames);
+
+            return "Groups deleted " . $groups_deleted;
 
 
         } catch (Exception $e){

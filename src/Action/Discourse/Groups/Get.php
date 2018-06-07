@@ -27,19 +27,10 @@ class Get
                 return $item->automatic;
             });
 
-            /*$filtered = $current_groups->reject(function ($item){
-            return $item['automatic'];
-        });*/
-            $test = $response->getBody();
-
-            //return json_decode($test);
             return $body;
         } catch (GuzzleException $e) {
             return $e;
-
         }
-
-
 
     }
 
