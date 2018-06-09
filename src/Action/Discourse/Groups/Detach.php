@@ -24,7 +24,7 @@ class Detach
     public function execute(Collection $roles, Collection $groups)
     {
         try{
-            $rolenames_array = $roles->map(function($role) {return $role->title;})->toArray();
+            $rolenames_array = $roles->map(function($role) {return studly_case($role->title);})->toArray();
 
             //Group minus Roles, what is left should be deleted
             $groups_deleted = collect();

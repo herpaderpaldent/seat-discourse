@@ -11,7 +11,6 @@ namespace Herpaderpaldent\Seat\SeatDiscourse\Action\Discourse\Groups;
 use GuzzleHttp\Exception\GuzzleException;
 use GuzzleHttp\Client;
 
-
 class Create
 {
     public function execute(String $groupname)
@@ -28,7 +27,7 @@ class Create
 
             if (200 === $response->getStatusCode()) {
 
-                return true;
+                return 'Created Group: '. $groupname;
 
             }
 

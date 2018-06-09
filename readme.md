@@ -29,7 +29,9 @@ add following to the `.env`:
 DISCOURSE_URL=https://discourse.example.com
 DISCOURSE_API_USERNAME=username
 DISCOURSE_API_KEY=key
+DISCOURSE_SECRET=secret
 ```
+Discourse-URL {{base_url}}/discourse/sso
 
 ### For SeAT 3.0, you are done with the Install
 
@@ -41,9 +43,5 @@ The package uses the auto registration feature
 
 * document Discourse configuration
 * send `log out` to Discourse when disabling/deleting the user
-* badges to user
-* support for [`custom_fields`](https://meta.discourse.org/t/custom-user-fields-for-plugins/14956)
 * failed login redirect
-* `return_paths` support
 
-#

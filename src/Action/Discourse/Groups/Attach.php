@@ -23,14 +23,21 @@ class Attach
     public function execute(Collection $roles, Collection $groups)
     {
         try{
-            $rolenames = $roles->map(function($role) {return $role->title;});
-            $groupnames = $groups->map( function ($group){return $group->name;});
+            $feedback = collect();
 
-            $rolenames->diff($groupnames)->each(function($missingroup) {
-                $this->create->execute($missingroup);
+
+            $groupnames_array = $groups->map( function ($group){return $group->name;})->toArray();
+
+            $roles->each(function($role) use ($feedback, $groupnames_array){
+                if(!in_array(studly_case($role->title),$groupnames_array)){
+                    $feedback->push( $this->create->execute(studly_case($role->title)));
+                }
             });
 
-            return 'Created groups: '. $rolenames->diff($groupnames);
+
+            return $feedback;
+
+
 
         } catch (Exception $e){
             return $e;

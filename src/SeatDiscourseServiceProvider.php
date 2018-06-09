@@ -19,14 +19,9 @@ class SeatDiscourseServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->addCommands();
+        $this->addRoutes();
         $this->addEvents();
 
-        $this->app['router']->group(["middleware" => ["web", "auth"]], function (Router $router) {
-            $router->get($this->app['config']->get('services.discourse.route'), [
-                'uses' => 'Herpaderpaldent\Seat\SeatDiscourse\Controllers\SsoController@login',
-                'as'   => 'sso.login',
-            ]);
-        });
     }
 
     /**
@@ -39,14 +34,14 @@ class SeatDiscourseServiceProvider extends ServiceProvider
         //
     }
 
-    public function addEvents()
+    private function addEvents()
     {
 
         // Internal Authentication Events
         //$this->app->events->listen(RegisterEvent::class, Register::class);
 
     }
-    public function addCommands()
+    private function addCommands()
     {
 
         $this->commands([
@@ -54,5 +49,11 @@ class SeatDiscourseServiceProvider extends ServiceProvider
         ]);
 
 
+    }
+    private function addRoutes()
+    {
+        if (!$this->app->routesAreCached()) {
+            include __DIR__ . '/Http/routes.php';
+        }
     }
 }
