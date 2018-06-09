@@ -1,13 +1,15 @@
 <?php
 
-namespace Herpaderpaldent\Seat\SeatDiscourse\Controllers;
+namespace Herpaderpaldent\Seat\SeatDiscourse\Http\Controllers;
 
 use Cviebrock\DiscoursePHP\SSOHelper;
+use Herpaderpaldent\Seat\SeatDiscourse\Action\Discourse\Groups\Sync;
 use Illuminate\Contracts\Auth\Authenticatable as User;
 use Illuminate\Contracts\Config\Repository as Config;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Collection;
+use Seat\Web\Models\Acl\Role;
 
 /**
  * Class SsoController
@@ -58,6 +60,14 @@ class SsoController extends Controller
         $this->sso = $sso->setSecret(getenv('DISCOURSE_SECRET'));
     }
 
+    public function redirect()
+    {
+        if(!$this->user->group->email){
+            return redirect()->route('profile.view')->with('error','You must enter an email address to use the forum.');
+        }
+        return redirect()->away(env('DISCOURSE_URL'));
+    }
+
 
     /**
      * Build out the extra parameters to send to Discourse
@@ -77,16 +87,16 @@ class SsoController extends Controller
 
             // Groups to make sure that the user is part of in a comma-separated string
             // NOTE: Groups cannot have spaces in their names & must already exist in Discourse
-            'add_groups' => null,
+            'add_groups' => $this->user->group->roles->map(function ($role){return studly_case($role->title);})->implode(', '),
 
             // Boolean for user a Discourse admin, leave null to ignore
             //'admin' => null,
 
             // Full path to user's avatar image
-            'avatar_url' => img('Character',$this->user->id,128,null,false),
+            'avatar_url' => 'http://image.eveonline.com/Character/'.$this->user->group->main_character_id.'_128.jpg',
 
             // The avatar is cached, so this triggers an update
-            'avatar_force_update' => false,
+            'avatar_force_update' => true,
 
             // Content of the user's bio
             //'bio' => null,
@@ -96,13 +106,13 @@ class SsoController extends Controller
 
             // Full name on Discourse if the user is new or
             // if SiteSetting.sso_overrides_name is set
-            'name' => $this->user->name,
+            'name' => $this->user->group->main_character->name,
 
             // Groups to make sure that the user is *NOT* part of in a comma-separated string
             // NOTE: Groups cannot have spaces in their names & must already exist in Discourse
             // There is not a way to specify the exact list of groups that a user is in, so
             // you may want to send the inverse of the 'add_groups'
-            'remove_groups' => null,
+            'remove_groups' => Role::all()->diff($this->user->group->roles)->map(function ($role){return studly_case($role->title);})->implode(', '),
 
             // If the email has not been verified, set this to true
             'require_activation' => false,
@@ -152,15 +162,17 @@ class SsoController extends Controller
      *
      * @return mixed
      */
-    public function login(Request $request)
+    public function login(Request $request, Sync $sync)
     {
-        $this->user = $request->user();
-        /*$access = $this->config->get('user')
-                               ->get('access', null);
+        if(!$this->user->group->email){
+            return redirect()->route('profile.view')->with('error','You must enter an email address to use the forum.');
+        }
+        //ToDo: Refactoring sync by replacing it with model events
+        $sync->execute();
 
-        if (! is_null($access) && ! $this->parseUserValue($access)) {
-            abort(403); //Forbidden
-        }*/
+        $this->user = $request->user();
+
+
 
         if (! ($this->sso->validatePayload($payload = $request->get('sso'), $request->get('sig')))) {
             abort(403); //Forbidden
@@ -168,12 +180,8 @@ class SsoController extends Controller
 
         $query = $this->sso->getSignInString(
             $this->sso->getNonce($payload),
-            $this->user->id,
-            $this->user->email,
-            /*$this->parseUserValue($this->config->get('user')
-                                               ->get('external_id')),
-            $this->parseUserValue($this->config->get('user')
-                                               ->get('email')),*/
+            $this->user->group->main_character_id,
+            $this->user->group->email,
             $this->buildExtraParameters()
         );
 
