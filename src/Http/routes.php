@@ -16,15 +16,9 @@ Route::group([
             'uses' => 'SsoController@login',
             'as'   => 'sso.login',
         ]);
+        Route::get('discourse', [
+            'uses' => 'SsoController@redirect',
+            'as'   => 'sso.forum',
+        ]);
     });
 });
-
-/*
- * ToDo: Delete this if working
- * $this->app['router']->group(["middleware" => ["web", "auth"]], function (Router $router) {
-            $router->get($this->app['config']->get('services.discourse.route'), [
-                'uses' => 'Herpaderpaldent\Seat\SeatDiscourse\Controllers\SsoController@login',
-                'as'   => 'sso.login',
-            ]);
-        });
- */

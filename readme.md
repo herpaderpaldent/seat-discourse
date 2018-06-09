@@ -1,8 +1,7 @@
 # Hepraderp Aldent's - SeAT Discourse
 
 This SeAT-Package is based upon [SPINEN's Discourse SSO for Laravel](https://github.com/spinen/laravel-discourse-sso). 
-Extendend with [richp10/discourse-api-php](https://github.com/richp10/discourse-api-php) to be able to create users and 
-topics based on roles in SeAT.
+Extendend with custom actions to create groups.
 
 ## Prerequisite
 
@@ -31,7 +30,8 @@ DISCOURSE_API_USERNAME=username
 DISCOURSE_API_KEY=key
 DISCOURSE_SECRET=secret
 ```
-Discourse-URL {{base_url}}/discourse/sso
+On the discourse-page settings set the URL accordingly: 
+Discourse-URL: `{{base_url}}/discourse/sso`
 
 ### For SeAT 3.0, you are done with the Install
 

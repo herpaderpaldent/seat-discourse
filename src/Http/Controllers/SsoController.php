@@ -9,7 +9,6 @@ use Illuminate\Contracts\Config\Repository as Config;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Collection;
-use Illuminate\Support\Facades\Auth;
 use Seat\Web\Models\Acl\Role;
 
 /**
@@ -59,6 +58,14 @@ class SsoController extends Controller
     public function __construct(SSOHelper $sso)
     {
         $this->sso = $sso->setSecret(getenv('DISCOURSE_SECRET'));
+    }
+
+    public function redirect()
+    {
+        if(!$this->user->group->email){
+            return redirect()->route('profile.view')->with('error','You must enter an email address to use the forum.');
+        }
+        return redirect()->away(env('DISCOURSE_URL'));
     }
 
 
@@ -157,10 +164,15 @@ class SsoController extends Controller
      */
     public function login(Request $request, Sync $sync)
     {
+        if(!$this->user->group->email){
+            return redirect()->route('profile.view')->with('error','You must enter an email address to use the forum.');
+        }
         //ToDo: Refactoring sync by replacing it with model events
         $sync->execute();
 
         $this->user = $request->user();
+
+
 
         if (! ($this->sso->validatePayload($payload = $request->get('sso'), $request->get('sig')))) {
             abort(403); //Forbidden

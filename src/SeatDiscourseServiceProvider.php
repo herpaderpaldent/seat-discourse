@@ -31,7 +31,8 @@ class SeatDiscourseServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        $this->mergeConfigFrom(
+            __DIR__ . '/config/seatdiscourse.sidebar.php', 'package.sidebar');
     }
 
     private function addEvents()
