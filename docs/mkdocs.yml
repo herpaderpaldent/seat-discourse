@@ -1,0 +1,49 @@
+# Information
+site_name: 'SeAT Discourse Documentation'
+site_description: 'Simple EVE Api Tool Discourse Documentation'
+site_url: 'https://github.com/herpaderpaldent/seat-discourse/docs'
+
+# Repository
+repo_name: 'herpaderpaldent/seat-discourse'
+repo_url: 'https://github.com/herpaderpaldent/seat-discourse/docs'
+
+# Copyright
+copyright: 'Copyright &copy; 2018 Felix Huber'
+
+# Documentation TOC
+pages:
+    - Home: index.md
+#    - Requirements: general/requirements.md
+#    - Basic Installation: guides/installation/basic_installation/installation.md
+#    - Advanced Installation:
+#        - Getting Started: guides/installation/manual_installation/getting_started.md
+#        - CentOS: guides/installation/manual_installation/centos.md
+#        - Debian: guides/installation/manual_installation/debian.md
+#        - Docker: guides/installation/manual_installation/docker.md
+#        - Manual: guides/installation/manual_installation/manual.md
+#        - Ubuntu: guides/installation/manual_installation/ubuntu.md
+
+# Theme Configuration
+theme:
+    name: 'material'
+    palette:
+        primary: 'grey'
+        accent: 'indigo'
+
+
+# Customization
+markdown_extensions:
+    - admonition
+    - codehilite
+    - toc:
+        permalink: true
+extra:
+  social:
+    - type: 'github'
+      link: 'https://github.com/herpaderpaldent/seat-discourse'
+# Tabs customisation
+extra_css:
+    - css/extra_typo.css
+    - css/extra_tabs.css
+extra_javascript:
+    - js/extra_tabs.js
