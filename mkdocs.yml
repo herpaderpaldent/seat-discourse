@@ -1,11 +1,11 @@
 # Information
 site_name: 'SeAT Discourse Documentation'
 site_description: 'Simple EVE Api Tool Discourse Documentation'
-site_url: 'https://github.com/herpaderpaldent/seat-discourse/docs'
+site_url: 'https://github.com/herpaderpaldent/seat-discourse'
 
 # Repository
 repo_name: 'herpaderpaldent/seat-discourse'
-repo_url: 'https://github.com/herpaderpaldent/seat-discourse/docs'
+repo_url: 'https://github.com/herpaderpaldent/seat-discourse'
 
 # Copyright
 copyright: 'Copyright &copy; 2018 Felix Huber'
