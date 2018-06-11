@@ -1,0 +1,34 @@
+{
+    "docs": [
+        {
+            "location": "/", 
+            "text": "Hepraderp Aldent's - SeAT Discourse\n\n\nWelcome to the \nSeAT Discourse\n documentation pages!\n\n\nThis SeAT-Package is based upon \nSPINEN's Discourse SSO for Laravel\n. \nExtendend with custom actions to create groups.\n\n\nPrerequisite\n\n\nThere are is one dependency.\n\n\n\n\n\"cviebrock/discourse-php\": \"^0.9.3\"\n\n\n\n\nInstall\n\n\nInstall Discourse SSO for Laravel:\n\n\n    $ composer require herpaderpaldent/seat-discourse\n\n\n\n\n\nadd following to the \n.env\n:\n\n\n\n\nDISCOURSE_URL (do not add a trailing slash!)\n\n\nDISCOURSE_API_USERNAME the username of the admin account you generated the API key with\n\n\nDISCOURSE_API_KEY the key you just generated\n\n\n\n\nDISCOURSE_URL=https://discourse.example.com\nDISCOURSE_API_USERNAME=username\nDISCOURSE_API_KEY=key\nDISCOURSE_SECRET=secret\n\n\n\n\n\nOn the discourse-page settings set the URL accordingly: \nDiscourse-URL: \n{{base_url}}/discourse/sso\n\n\nFor SeAT 3.0, you are done with the Install\n\n\nThe package uses the auto registration feature\n\n\nLeft to do\n\n\n\n\ndocument Discourse configuration\n\n\nsend \nlog out\n to Discourse when disabling/deleting the user\n\n\nfailed login redirect", 
+            "title": "Home"
+        }, 
+        {
+            "location": "/#hepraderp-aldents-seat-discourse", 
+            "text": "Welcome to the  SeAT Discourse  documentation pages!  This SeAT-Package is based upon  SPINEN's Discourse SSO for Laravel . \nExtendend with custom actions to create groups.", 
+            "title": "Hepraderp Aldent's - SeAT Discourse"
+        }, 
+        {
+            "location": "/#prerequisite", 
+            "text": "There are is one dependency.   \"cviebrock/discourse-php\": \"^0.9.3\"", 
+            "title": "Prerequisite"
+        }, 
+        {
+            "location": "/#install", 
+            "text": "Install Discourse SSO for Laravel:      $ composer require herpaderpaldent/seat-discourse  add following to the  .env :   DISCOURSE_URL (do not add a trailing slash!)  DISCOURSE_API_USERNAME the username of the admin account you generated the API key with  DISCOURSE_API_KEY the key you just generated   DISCOURSE_URL=https://discourse.example.com\nDISCOURSE_API_USERNAME=username\nDISCOURSE_API_KEY=key\nDISCOURSE_SECRET=secret  On the discourse-page settings set the URL accordingly: \nDiscourse-URL:  {{base_url}}/discourse/sso", 
+            "title": "Install"
+        }, 
+        {
+            "location": "/#for-seat-30-you-are-done-with-the-install", 
+            "text": "The package uses the auto registration feature", 
+            "title": "For SeAT 3.0, you are done with the Install"
+        }, 
+        {
+            "location": "/#left-to-do", 
+            "text": "document Discourse configuration  send  log out  to Discourse when disabling/deleting the user  failed login redirect", 
+            "title": "Left to do"
+        }
+    ]
+}
