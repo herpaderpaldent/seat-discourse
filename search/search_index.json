@@ -2,31 +2,86 @@
     "docs": [
         {
             "location": "/", 
-            "text": "Hepraderp Aldent's - SeAT Discourse\n\n\nWelcome to the \nSeAT Discourse\n documentation pages!\n\n\nThis SeAT-Package is based upon \nSPINEN's Discourse SSO for Laravel\n. \nExtendend with custom actions to create groups.\n\n\nPrerequisite\n\n\nThere are is one dependency.\n\n\n\n\n\"cviebrock/discourse-php\": \"^0.9.3\"\n\n\n\n\nInstall\n\n\nInstall Discourse SSO for Laravel:\n\n\n    $ composer require herpaderpaldent/seat-discourse\n\n\n\n\n\nadd following to the \n.env\n:\n\n\n\n\nDISCOURSE_URL (do not add a trailing slash!)\n\n\nDISCOURSE_API_USERNAME the username of the admin account you generated the API key with\n\n\nDISCOURSE_API_KEY the key you just generated\n\n\n\n\nDISCOURSE_URL=https://discourse.example.com\nDISCOURSE_API_USERNAME=username\nDISCOURSE_API_KEY=key\nDISCOURSE_SECRET=secret\n\n\n\n\n\nOn the discourse-page settings set the URL accordingly: \nDiscourse-URL: \n{{base_url}}/discourse/sso\n\n\nFor SeAT 3.0, you are done with the Install\n\n\nThe package uses the auto registration feature\n\n\nLeft to do\n\n\n\n\ndocument Discourse configuration\n\n\nsend \nlog out\n to Discourse when disabling/deleting the user\n\n\nfailed login redirect", 
+            "text": "Work in Progress\n\n\nSite is work in progress\n\n\n\n\nHepraderp Aldent's - SeAT Discourse\n\n\nWelcome to the \nSeAT Discourse\n documentation pages!\n\n\n\n\nThis SeAT-Package is based upon \nSPINEN's Discourse SSO for Laravel\n and extended with various functions to support eve online usecases and SeAT roles.\n\nDiscourse\n is the leading free, open sourse application for moder web discussion forums. It is the very same forum that \neve-online forum\n uses? \n\n\nPrerequisite\n\n\n\n\nSeAT 3.0\n \n\n\n\n\nTable of Content\n\n\nThe Guide is mainly aimed for any herpaderps (like myself) that needs a step-by-step guide to install discourse and link it to SeAT. The second goal this guide tries to achieve is to convince others to use Discourse with SeAT. This Guide covers the following:\n\n\n\n\nDiscourse installation\n\n\nProxyserver configuration (traefik only atm.)\n\n\nSeAT-Discourse package installations\n\n\nPractical guides\n\n\n\n\nScreenshots\n\n\n\n\n\n\nContact\n\n\nIf you like this package feel free to donate some ISK's to Herpaderp Aldent. If you have feedback, found some bugs or got a feature request. Feel free to open an issue on \nGithub", 
             "title": "Home"
         }, 
         {
             "location": "/#hepraderp-aldents-seat-discourse", 
-            "text": "Welcome to the  SeAT Discourse  documentation pages!  This SeAT-Package is based upon  SPINEN's Discourse SSO for Laravel . \nExtendend with custom actions to create groups.", 
+            "text": "Welcome to the  SeAT Discourse  documentation pages!   This SeAT-Package is based upon  SPINEN's Discourse SSO for Laravel  and extended with various functions to support eve online usecases and SeAT roles. Discourse  is the leading free, open sourse application for moder web discussion forums. It is the very same forum that  eve-online forum  uses?", 
             "title": "Hepraderp Aldent's - SeAT Discourse"
         }, 
         {
             "location": "/#prerequisite", 
-            "text": "There are is one dependency.   \"cviebrock/discourse-php\": \"^0.9.3\"", 
+            "text": "SeAT 3.0", 
             "title": "Prerequisite"
         }, 
         {
-            "location": "/#install", 
-            "text": "Install Discourse SSO for Laravel:      $ composer require herpaderpaldent/seat-discourse  add following to the  .env :   DISCOURSE_URL (do not add a trailing slash!)  DISCOURSE_API_USERNAME the username of the admin account you generated the API key with  DISCOURSE_API_KEY the key you just generated   DISCOURSE_URL=https://discourse.example.com\nDISCOURSE_API_USERNAME=username\nDISCOURSE_API_KEY=key\nDISCOURSE_SECRET=secret  On the discourse-page settings set the URL accordingly: \nDiscourse-URL:  {{base_url}}/discourse/sso", 
-            "title": "Install"
+            "location": "/#table-of-content", 
+            "text": "The Guide is mainly aimed for any herpaderps (like myself) that needs a step-by-step guide to install discourse and link it to SeAT. The second goal this guide tries to achieve is to convince others to use Discourse with SeAT. This Guide covers the following:   Discourse installation  Proxyserver configuration (traefik only atm.)  SeAT-Discourse package installations  Practical guides", 
+            "title": "Table of Content"
         }, 
         {
-            "location": "/#for-seat-30-you-are-done-with-the-install", 
+            "location": "/#screenshots", 
+            "text": "", 
+            "title": "Screenshots"
+        }, 
+        {
+            "location": "/#contact", 
+            "text": "If you like this package feel free to donate some ISK's to Herpaderp Aldent. If you have feedback, found some bugs or got a feature request. Feel free to open an issue on  Github", 
+            "title": "Contact"
+        }, 
+        {
+            "location": "/installation/discourse_installation/", 
+            "text": "Discourse\n\n\nThis is a purely optional guide and serves only for reference. Please have a look at the \nofficial discourse documentation\n.\n\n\nInstall Docker\n\n\n\n\nNot necessairy for SeAT-Docker Installations\n\n\nIf you are running a dockerized SeAT Instance you do not need to do this step\n\n\n\n\nwget -qO- https://get.docker.io/ \n|\n sh\n\n\n\n\n\nInstall Discourse\n\n\nDownload Discourse\n\n\nmkdir /opt/discourse\ngit clone https://github.com/discourse/discourse_docker.git /opt/discourse\n\n\n\n\n\nConfigure\n\n\nCopy the sample configuration into the \n/containers\n folder \n\n\ncd\n /opt/discourse\ncp samples/standalone.yml containers/app.yml\n\n\n\n\n\nthen edit the \napp.yml\n with a text editor (\nnano\n, \nvi\n, etc.)\n\n\nnano containers/app.yml\n\n\n\n\n\nChange the following:\n\n\n\n\nWarning\n\n\nWarning Discourse will not work from an IP address, you must own a domain name such as \nexample.com\n to proceed.\n\n\n\n\n\n\nDISCOURSE_HOSTNAME\n should be \ndiscourse.example.com\n or something similar.\n\n\n\n\n\n\nWarning\n\n\nEmail is CRITICAL for account creation and notifications in Discourse.\n If you do not properly configure email before bootstrapping YOU WILL HAVE A BROKEN SITE!\n\n\n\n\n\n\nDISCOURSE_DEVELOPER_EMAILS\n should be a list of admin account email addresses separated by commas.\n\n\nDISCOURSE_SMTP_ADDRESS\n\n\nDISCOURSE_SMTP_USER_NAME\n\n\nDISCOURSE_SMTP_PASSWORD\n\n\n\n\n\n\nHint\n\n\nNo existing mail server? Checkout discourse's \nRecommended Email Providers for Discourse\n \n\n\n\n\nTo install behind a proxy server, look for this seciton:\n\n\n## which TCP/IP ports should this container expose?\n\n\n## If you want Discourse to share a port with another webserver like Apache or nginx,\n\n\n## see https://meta.discourse.org/t/17247 for details\n\nexpose:\n  - \n80:80\n   \n# http\n\n  - \n443:443\n \n# https\n\n\n\n\n\n\nand change it to\n\n\n  - \n7890:80\n   \n# http\n\n  - \n7891:443\n \n# https\n\n\n\n\n\n\nBuild and launch\n\n\n./launcher bootstrap app\n./launcher start app\n\n\n\n\n\n\n\nSuccess\n\n\nYour discourse instance is now available at \ndiscourse.example.com:7890\n\n\n\n\nNow you need to setup your proxy-server.", 
+            "title": "Discourse Installation"
+        }, 
+        {
+            "location": "/installation/discourse_installation/#discourse", 
+            "text": "This is a purely optional guide and serves only for reference. Please have a look at the  official discourse documentation .", 
+            "title": "Discourse"
+        }, 
+        {
+            "location": "/installation/discourse_installation/#install-docker", 
+            "text": "Not necessairy for SeAT-Docker Installations  If you are running a dockerized SeAT Instance you do not need to do this step   wget -qO- https://get.docker.io/  |  sh", 
+            "title": "Install Docker"
+        }, 
+        {
+            "location": "/installation/discourse_installation/#install-discourse", 
+            "text": "", 
+            "title": "Install Discourse"
+        }, 
+        {
+            "location": "/installation/discourse_installation/#download-discourse", 
+            "text": "mkdir /opt/discourse\ngit clone https://github.com/discourse/discourse_docker.git /opt/discourse", 
+            "title": "Download Discourse"
+        }, 
+        {
+            "location": "/installation/discourse_installation/#configure", 
+            "text": "Copy the sample configuration into the  /containers  folder   cd  /opt/discourse\ncp samples/standalone.yml containers/app.yml  then edit the  app.yml  with a text editor ( nano ,  vi , etc.)  nano containers/app.yml  Change the following:   Warning  Warning Discourse will not work from an IP address, you must own a domain name such as  example.com  to proceed.    DISCOURSE_HOSTNAME  should be  discourse.example.com  or something similar.    Warning  Email is CRITICAL for account creation and notifications in Discourse.  If you do not properly configure email before bootstrapping YOU WILL HAVE A BROKEN SITE!    DISCOURSE_DEVELOPER_EMAILS  should be a list of admin account email addresses separated by commas.  DISCOURSE_SMTP_ADDRESS  DISCOURSE_SMTP_USER_NAME  DISCOURSE_SMTP_PASSWORD    Hint  No existing mail server? Checkout discourse's  Recommended Email Providers for Discourse     To install behind a proxy server, look for this seciton:  ## which TCP/IP ports should this container expose?  ## If you want Discourse to share a port with another webserver like Apache or nginx,  ## see https://meta.discourse.org/t/17247 for details \nexpose:\n  -  80:80     # http \n  -  443:443   # https   and change it to    -  7890:80     # http \n  -  7891:443   # https", 
+            "title": "Configure"
+        }, 
+        {
+            "location": "/installation/discourse_installation/#build-and-launch", 
+            "text": "./launcher bootstrap app\n./launcher start app   Success  Your discourse instance is now available at  discourse.example.com:7890   Now you need to setup your proxy-server.", 
+            "title": "Build and launch"
+        }, 
+        {
+            "location": "/installation/package_installation/", 
+            "text": "Work in Progress\n\n\nSite is work in progress\n\n\n\n\nPackage installation\n\n\nInstall Discourse SSO for Laravel:\n\n\n    $ composer require herpaderpaldent/seat-discourse\n\n\n\n\n\nadd following to the \n.env\n:\n\n\n\n\nDISCOURSE_URL (do not add a trailing slash!)\n\n\nDISCOURSE_API_USERNAME the username of the admin account you generated the API key with\n\n\nDISCOURSE_API_KEY the key you just generated\n\n\n\n\nDISCOURSE_URL=https://discourse.example.com\nDISCOURSE_API_USERNAME=username\nDISCOURSE_API_KEY=key\nDISCOURSE_SECRET=secret\n\n\n\n\n\nOn the discourse-page settings set the URL accordingly: \nDiscourse-URL: \n{{base_url}}/discourse/sso\n\n\nFor SeAT 3.0, you are done with the Install\n\n\nThe package uses the auto registration feature\n\n\nLeft to do\n\n\n\n\ndocument Discourse configuration\n\n\nsend \nlog out\n to Discourse when disabling/deleting the user\n\n\nfailed login redirect", 
+            "title": "Package Installation"
+        }, 
+        {
+            "location": "/installation/package_installation/#package-installation", 
+            "text": "Install Discourse SSO for Laravel:      $ composer require herpaderpaldent/seat-discourse  add following to the  .env :   DISCOURSE_URL (do not add a trailing slash!)  DISCOURSE_API_USERNAME the username of the admin account you generated the API key with  DISCOURSE_API_KEY the key you just generated   DISCOURSE_URL=https://discourse.example.com\nDISCOURSE_API_USERNAME=username\nDISCOURSE_API_KEY=key\nDISCOURSE_SECRET=secret  On the discourse-page settings set the URL accordingly: \nDiscourse-URL:  {{base_url}}/discourse/sso", 
+            "title": "Package installation"
+        }, 
+        {
+            "location": "/installation/package_installation/#for-seat-30-you-are-done-with-the-install", 
             "text": "The package uses the auto registration feature", 
             "title": "For SeAT 3.0, you are done with the Install"
         }, 
         {
-            "location": "/#left-to-do", 
+            "location": "/installation/package_installation/#left-to-do", 
             "text": "document Discourse configuration  send  log out  to Discourse when disabling/deleting the user  failed login redirect", 
             "title": "Left to do"
         }
