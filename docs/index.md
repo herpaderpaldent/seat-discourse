@@ -1,50 +1,37 @@
 ![SeAT](https://i.imgur.com/aPPOxSK.png)
 
+!!! info "Work in Progress"
+    Site is work in progress
+
 # Hepraderp Aldent's - SeAT Discourse
 
 Welcome to the [SeAT Discourse](https://github.com/herpaderpaldent/seat-discourse) documentation pages!
 
-This SeAT-Package is based upon [SPINEN's Discourse SSO for Laravel](https://github.com/spinen/laravel-discourse-sso). 
-Extendend with custom actions to create groups.
+![SeAT-Discourse](https://i.imgur.com/13OwMEs.png)
+
+This SeAT-Package is based upon [SPINEN's Discourse SSO for Laravel](https://github.com/spinen/laravel-discourse-sso) and extended with various functions to support eve online usecases and SeAT roles.
+[Discourse](https://www.discourse.org/) is the leading free, open sourse application for moder web discussion forums. It is the very same forum that [eve-online forum](https://forums.eveonline.com/) uses? 
 
 ## Prerequisite
 
-There are is one dependency.
+* [SeAT 3.0](https://github.com/eveseat/seat) 
 
-* ["cviebrock/discourse-php": "^0.9.3"](https://github.com/cviebrock/discourse-php)
+## Table of Content
 
-## Install
+The Guide is mainly aimed for any herpaderps (like myself) that needs a step-by-step guide to install discourse and link it to SeAT. The second goal this guide tries to achieve is to convince others to use Discourse with SeAT. This Guide covers the following:
 
-Install Discourse SSO for Laravel:
+1. [Discourse installation](/installation/discourse_installation)
+2. Proxyserver configuration (traefik only atm.)
+2. [SeAT-Discourse package installations](/installation/package_installation)
+3. Practical guides
 
-```bash
-    $ composer require herpaderpaldent/seat-discourse
-```
+## Screenshots
 
-add following to the `.env`:
+![SeAT-Discourse](https://i.imgur.com/FqTMDuA.png)
+![SeAT-Discourse](https://i.imgur.com/JYMVdlL.png)
 
+## Contact
 
-
-* DISCOURSE_URL (do not add a trailing slash!)
-* DISCOURSE_API_USERNAME the username of the admin account you generated the API key with
-* DISCOURSE_API_KEY the key you just generated
-```
-DISCOURSE_URL=https://discourse.example.com
-DISCOURSE_API_USERNAME=username
-DISCOURSE_API_KEY=key
-DISCOURSE_SECRET=secret
-```
-On the discourse-page settings set the URL accordingly: 
-Discourse-URL: `{{base_url}}/discourse/sso`
-
-### For SeAT 3.0, you are done with the Install
-
-The package uses the auto registration feature
+If you like this package feel free to donate some ISK's to Herpaderp Aldent. If you have feedback, found some bugs or got a feature request. Feel free to open an issue on [Github](https://github.com/herpaderpaldent/seat-discourse/issues/new)
 
 
-
-## Left to do
-
-* document Discourse configuration
-* send `log out` to Discourse when disabling/deleting the user
-* failed login redirect

@@ -13,7 +13,8 @@ copyright: 'Copyright &copy; 2018 Felix Huber'
 # Documentation TOC
 pages:
     - Home: index.md
-#    - Requirements: general/requirements.md
+    - Discourse Installation: installation/discourse_installation.md
+    - Package Installation: installation/package_installation.md
 #    - Basic Installation: guides/installation/basic_installation/installation.md
 #    - Advanced Installation:
 #        - Getting Started: guides/installation/manual_installation/getting_started.md
