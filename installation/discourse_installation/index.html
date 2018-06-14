@@ -339,6 +339,42 @@
       
 
 
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
+    
+    <label class="md-nav__link" for="nav-3">
+      Proxy Server Configuration
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        Proxy Server Configuration
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../proxy_server/traefik/" title="traefik" class="md-nav__link">
+      traefik
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
   <li class="md-nav__item">
     <a href="../package_installation/" title="Package Installation" class="md-nav__link">
       Package Installation
@@ -479,23 +515,8 @@ cp samples/standalone.yml containers/app.yml
 <p class="admonition-title">Hint</p>
 <p>No existing mail server? Checkout discourse's <a href="https://github.com/discourse/discourse/blob/master/docs/INSTALL-email.md">Recommended Email Providers for Discourse</a> </p>
 </div>
-<p>To install behind a proxy server, look for this seciton:</p>
-<div class="codehilite"><pre><span></span><span class="c1">## which TCP/IP ports should this container expose?</span>
-<span class="c1">## If you want Discourse to share a port with another webserver like Apache or nginx,</span>
-<span class="c1">## see https://meta.discourse.org/t/17247 for details</span>
-expose:
-  - <span class="s2">&quot;80:80&quot;</span>   <span class="c1"># http</span>
-  - <span class="s2">&quot;443:443&quot;</span> <span class="c1"># https</span>
-</pre></div>
-
-
-<p>and change it to</p>
-<div class="codehilite"><pre><span></span>  - <span class="s2">&quot;7890:80&quot;</span>   <span class="c1"># http</span>
-  - <span class="s2">&quot;7891:443&quot;</span> <span class="c1"># https</span>
-</pre></div>
-
-
 <h3 id="build-and-launch">Build and launch<a class="headerlink" href="#build-and-launch" title="Permanent link">&para;</a></h3>
+<p>After every change to the <code>app.yml</code> you need to rebuild your discourse application:</p>
 <div class="codehilite"><pre><span></span>./launcher bootstrap app
 ./launcher start app
 </pre></div>
@@ -503,9 +524,8 @@ expose:
 
 <div class="admonition success">
 <p class="admonition-title">Success</p>
-<p>Your discourse instance is now available at <code>discourse.example.com:7890</code></p>
+<p>Your discourse instance is now available at <code>discourse.example.com</code></p>
 </div>
-<p>Now you need to setup your proxy-server.</p>
                 
                   
                 
@@ -541,13 +561,13 @@ expose:
           </a>
         
         
-          <a href="../package_installation/" title="Package Installation" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="../proxy_server/traefik/" title="traefik" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
               <span class="md-flex__ellipsis">
                 <span class="md-footer-nav__direction">
                   Next
                 </span>
-                Package Installation
+                traefik
               </span>
             </div>
             <div class="md-flex__cell md-flex__cell--shrink">
