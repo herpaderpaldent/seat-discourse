@@ -52,29 +52,17 @@ Change the following:
 !!! hint
     No existing mail server? Checkout discourse's [Recommended Email Providers for Discourse](https://github.com/discourse/discourse/blob/master/docs/INSTALL-email.md) 
 
-To install behind a proxy server, look for this seciton:
-````bash
-## which TCP/IP ports should this container expose?
-## If you want Discourse to share a port with another webserver like Apache or nginx,
-## see https://meta.discourse.org/t/17247 for details
-expose:
-  - "80:80"   # http
-  - "443:443" # https
-````
 
-and change it to
-````bash
-  - "7890:80"   # http
-  - "7891:443" # https
-````
 
 ### Build and launch
+
+After every change to the `app.yml` you need to rebuild your discourse application:
+
 ````bash
 ./launcher bootstrap app
 ./launcher start app
 ````
 
 !!! success
-    Your discourse instance is now available at `discourse.example.com:7890`
+    Your discourse instance is now available at `discourse.example.com`
     
-Now you need to setup your proxy-server.

@@ -14,10 +14,9 @@ copyright: 'Copyright &copy; 2018 Felix Huber'
 pages:
     - Home: index.md
     - Discourse Installation: installation/discourse_installation.md
+    - Proxy Server Configuration:
+        - traefik: installation/proxy_server/traefik.md
     - Package Installation: installation/package_installation.md
-#    - Basic Installation: guides/installation/basic_installation/installation.md
-#    - Advanced Installation:
-#        - Getting Started: guides/installation/manual_installation/getting_started.md
 #        - CentOS: guides/installation/manual_installation/centos.md
 #        - Debian: guides/installation/manual_installation/debian.md
 #        - Docker: guides/installation/manual_installation/docker.md
