@@ -1,7 +1,5 @@
 ![SeAT](https://i.imgur.com/aPPOxSK.png)
 
-!!! info "Work in Progress"
-    Site is work in progress
 
 #SeAT-Discourse Installation
 

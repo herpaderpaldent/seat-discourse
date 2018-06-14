@@ -1,8 +1,5 @@
 ![SeAT](https://i.imgur.com/aPPOxSK.png)
 
-!!! info "Work in Progress"
-    Site is work in progress
-
 # Hepraderp Aldent's - SeAT Discourse
 
 Welcome to the [SeAT Discourse](https://github.com/herpaderpaldent/seat-discourse) documentation pages!
