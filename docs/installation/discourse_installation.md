@@ -6,7 +6,7 @@ This is a purely optional guide and serves only for reference. Please have a loo
 
 ## Install Docker
 
-!!! info "Not necessairy for SeAT-Docker Installations"
+!!! info "Not necessarily for SeAT-Docker Installations"
     If you are running a dockerized SeAT Instance you do not need to do this step
     
 ````bash

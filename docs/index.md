@@ -6,8 +6,8 @@ Welcome to the [SeAT Discourse](https://github.com/herpaderpaldent/seat-discours
 
 ![SeAT-Discourse](https://i.imgur.com/13OwMEs.png)
 
-This SeAT-Package is based upon [SPINEN's Discourse SSO for Laravel](https://github.com/spinen/laravel-discourse-sso) and extended with various functions to support eve online usecases and SeAT roles.
-[Discourse](https://www.discourse.org/) is the leading free, open sourse application for moder web discussion forums. It is the very same forum that [eve-online forum](https://forums.eveonline.com/) uses? 
+This SeAT-Package is based upon [SPINEN's Discourse SSO for Laravel](https://github.com/spinen/laravel-discourse-sso) and extended with various functions to support eve online use cases and SeAT roles.
+[Discourse](https://www.discourse.org/) is the leading free, open source application for moder web discussion forums. It is the very same forum that [eve-online forum](https://forums.eveonline.com/) uses!
 
 ## Prerequisite
 
@@ -18,9 +18,9 @@ This SeAT-Package is based upon [SPINEN's Discourse SSO for Laravel](https://git
 The Guide is mainly aimed for any herpaderps (like myself) that needs a step-by-step guide to install discourse and link it to SeAT. The second goal this guide tries to achieve is to convince others to use Discourse with SeAT. This Guide covers the following:
 
 1. [Discourse installation](/installation/discourse_installation)
-2. Proxyserver configuration (traefik only atm.)
+2. [Proxyserver configuration](/installation/proxy_server/traefik) (traefik only atm.)
 2. [SeAT-Discourse package installations](/installation/package_installation)
-3. Practical guides
+3. Practical guides (WIP)
 
 ## Screenshots
 
