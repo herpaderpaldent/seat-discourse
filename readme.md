@@ -24,3 +24,5 @@ Extendend with custom actions to create groups.
 * send `log out` to Discourse when disabling/deleting the user
 * failed login redirect
 
+## Donations
+If you like this SeAT-Plugin i appreciate every ISK donation on IG: Herpaderp Aldent
