@@ -88,7 +88,7 @@ class SsoController extends Controller
 
             // Groups to make sure that the user is part of in a comma-separated string
             // NOTE: Groups cannot have spaces in their names & must already exist in Discourse
-            'add_groups' => $this->user->group->roles->map(function ($role){return studly_case($role->title);})->implode(', '),
+            'add_groups' => $this->user->group->roles->map(function ($role){return studly_case($role->title);})->implode(','),
 
             // Boolean for user a Discourse admin, leave null to ignore
             //'admin' => null,
@@ -113,7 +113,7 @@ class SsoController extends Controller
             // NOTE: Groups cannot have spaces in their names & must already exist in Discourse
             // There is not a way to specify the exact list of groups that a user is in, so
             // you may want to send the inverse of the 'add_groups'
-            'remove_groups' => Role::all()->diff($this->user->group->roles)->map(function ($role){return studly_case($role->title);})->implode(', '),
+            'remove_groups' => Role::all()->diff($this->user->group->roles)->map(function ($role){return studly_case($role->title);})->implode(','),
 
             // If the email has not been verified, set this to true
             'require_activation' => false,
