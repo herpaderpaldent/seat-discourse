@@ -59,7 +59,7 @@ Change the following:
 After every change to the `app.yml` you need to rebuild your discourse application:
 
 ````bash
-./launcher bootstrap app
+./launcher rebuild app
 ./launcher start app
 ````
 
