@@ -56,8 +56,6 @@ Change the following:
 
 ### Build and launch
 
-After every change to the `app.yml` you need to rebuild your discourse application:
-
 ````bash
 ./launcher bootstrap app
 ./launcher start app
@@ -65,4 +63,6 @@ After every change to the `app.yml` you need to rebuild your discourse applicati
 
 !!! success
     Your discourse instance is now available at `discourse.example.com`
-    
+
+!!! hint
+    After every change to the `app.yml` you need to rebuild your discourse application: `./launcher rebuild app`
