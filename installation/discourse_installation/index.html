@@ -516,7 +516,6 @@ cp samples/standalone.yml containers/app.yml
 <p>No existing mail server? Checkout discourse's <a href="https://github.com/discourse/discourse/blob/master/docs/INSTALL-email.md">Recommended Email Providers for Discourse</a> </p>
 </div>
 <h3 id="build-and-launch">Build and launch<a class="headerlink" href="#build-and-launch" title="Permanent link">&para;</a></h3>
-<p>After every change to the <code>app.yml</code> you need to rebuild your discourse application:</p>
 <div class="codehilite"><pre><span></span>./launcher bootstrap app
 ./launcher start app
 </pre></div>
@@ -525,6 +524,10 @@ cp samples/standalone.yml containers/app.yml
 <div class="admonition success">
 <p class="admonition-title">Success</p>
 <p>Your discourse instance is now available at <code>discourse.example.com</code></p>
+</div>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>After every change to the <code>app.yml</code> you need to rebuild your discourse application: <code>./launcher rebuild app</code></p>
 </div>
                 
                   
