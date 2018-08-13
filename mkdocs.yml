@@ -16,6 +16,7 @@ pages:
     - Discourse Installation: installation/discourse_installation.md
     - Proxy Server Configuration:
         - traefik: installation/proxy_server/traefik.md
+        - nginx: installation/proxy_server/nginx.md
     - Package Installation: installation/package_installation.md
 #        - CentOS: guides/installation/manual_installation/centos.md
 #        - Debian: guides/installation/manual_installation/debian.md
