@@ -1,8 +1,8 @@
 ![SeAT](https://i.imgur.com/aPPOxSK.png)
 
-# Traefik
+# Nginx
 
-If you have chosen to use traefik as proxy-server you need to do a few things:
+If you have chosen to use nginx as proxy-server you need to do a few things:
 
 ## Change TCP/IP Ports
 
@@ -81,4 +81,4 @@ After every change to the `app.yml` you need to rebuild your discourse applicati
 ````
 
 !!! success
-    Your discourse instance is now available at `discourse.example.com`. If you have setup your `.toml` correctly your discourse instance will be available via `https://`
+    Your discourse instance is now available at `discourse.example.com`. 
