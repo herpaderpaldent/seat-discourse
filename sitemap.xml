@@ -2,22 +2,27 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
      <loc>https://github.com/herpaderpaldent/seat-discourse/</loc>
-     <lastmod>2018-07-21</lastmod>
+     <lastmod>2018-08-14</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://github.com/herpaderpaldent/seat-discourse/installation/discourse_installation/</loc>
-     <lastmod>2018-07-21</lastmod>
+     <lastmod>2018-08-14</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://github.com/herpaderpaldent/seat-discourse/installation/proxy_server/traefik/</loc>
-     <lastmod>2018-07-21</lastmod>
+     <lastmod>2018-08-14</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
+     <loc>https://github.com/herpaderpaldent/seat-discourse/installation/proxy_server/nginx/</loc>
+     <lastmod>2018-08-14</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://github.com/herpaderpaldent/seat-discourse/installation/package_installation/</loc>
-     <lastmod>2018-07-21</lastmod>
+     <lastmod>2018-08-14</lastmod>
      <changefreq>daily</changefreq>
     </url>
 </urlset>

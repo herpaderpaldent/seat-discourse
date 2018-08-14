@@ -2,7 +2,7 @@
     "docs": [
         {
             "location": "/", 
-            "text": "Hepraderp Aldent's - SeAT Discourse\n\n\nWelcome to the \nSeAT Discourse\n documentation pages!\n\n\n\n\nThis SeAT-Package is based upon \nSPINEN's Discourse SSO for Laravel\n and extended with various functions to support eve online use cases and SeAT roles.\n\nDiscourse\n is the leading free, open source application for moder web discussion forums. It is the very same forum that \neve-online forum\n uses!\n\n\nPrerequisite\n\n\n\n\nSeAT 3.0\n \n\n\n\n\nTable of Content\n\n\nThe Guide is mainly aimed for any herpaderps (like myself) that needs a step-by-step guide to install discourse and link it to SeAT. The second goal this guide tries to achieve is to convince others to use Discourse with SeAT. This Guide covers the following:\n\n\n\n\nDiscourse installation\n\n\nProxyserver configuration\n (traefik only atm.)\n\n\nSeAT-Discourse package installations\n\n\nPractical guides (WIP)\n\n\n\n\nScreenshots\n\n\n\n\n\n\nContact\n\n\nIf you like this package feel free to donate some ISK's to Herpaderp Aldent. If you have feedback, found some bugs or got a feature request. Feel free to open an issue on \nGithub", 
+            "text": "Hepraderp Aldent's - SeAT Discourse\n\n\nWelcome to the \nSeAT Discourse\n documentation pages!\n\n\n\n\nThis SeAT-Package is based upon \nSPINEN's Discourse SSO for Laravel\n and extended with various functions to support eve online use cases and SeAT roles.\n\nDiscourse\n is the leading free, open source application for moder web discussion forums. It is the very same forum that \neve-online forum\n uses!\n\n\nPrerequisite\n\n\n\n\nSeAT 3.0\n \n\n\n\n\nTable of Content\n\n\nThe Guide is mainly aimed for any herpaderps (like myself) that needs a step-by-step guide to install discourse and link it to SeAT. The second goal this guide tries to achieve is to convince others to use Discourse with SeAT. This Guide covers the following:\n\n\n\n\nDiscourse installation\n\n\nProxyserver configuration:  \nTraefik\n or \nnginx\n\n\nSeAT-Discourse package installations\n\n\nPractical guides (WIP)\n\n\n\n\nScreenshots\n\n\n\n\n\n\nContact\n\n\nIf you like this package feel free to donate some ISK's to Herpaderp Aldent. If you have feedback, found some bugs or got a feature request. Feel free to open an issue on \nGithub", 
             "title": "Home"
         }, 
         {
@@ -17,7 +17,7 @@
         }, 
         {
             "location": "/#table-of-content", 
-            "text": "The Guide is mainly aimed for any herpaderps (like myself) that needs a step-by-step guide to install discourse and link it to SeAT. The second goal this guide tries to achieve is to convince others to use Discourse with SeAT. This Guide covers the following:   Discourse installation  Proxyserver configuration  (traefik only atm.)  SeAT-Discourse package installations  Practical guides (WIP)", 
+            "text": "The Guide is mainly aimed for any herpaderps (like myself) that needs a step-by-step guide to install discourse and link it to SeAT. The second goal this guide tries to achieve is to convince others to use Discourse with SeAT. This Guide covers the following:   Discourse installation  Proxyserver configuration:   Traefik  or  nginx  SeAT-Discourse package installations  Practical guides (WIP)", 
             "title": "Table of Content"
         }, 
         {
@@ -67,7 +67,7 @@
         }, 
         {
             "location": "/installation/proxy_server/traefik/", 
-            "text": "Traefik\n\n\nIf you have chosen to use traefik as proxy-server you need to do a few things:\n\n\nChange TCP/IP Ports\n\n\nTo install behind a proxy server, look for this section in the \napp.yml\n and change the external ports\n\n\n## which TCP/IP ports should this container expose?\n\n\n## If you want Discourse to share a port with another webserver like Apache or nginx,\n\n\n## see https://meta.discourse.org/t/17247 for details\n\nexpose:\n  - \n80:80\n   \n# http\n\n  - \n443:443\n \n# https\n\n\n\n\n\n\nand change it to something alike:\n\n\nexpose:\n  - \n7890:80\n   \n# http\n\n  - \n7891:443\n \n# https\n\ndocker_args:\n  - \n--network=web\n\n  - \n--expose=80\n\n  - \n-l traefik.backend=forum\n\n  - \n-l traefik.frontend.rule=Host:discourse.example.com\n\n  - \n-l traefik.docker.network=web\n\n  - \n-l traefik.port=80\n\n\n\n\n\n\nBuild and launch\n\n\nAfter every change to the \napp.yml\n you need to rebuild your discourse application:\n\n\n./launcher bootstrap app\n./launcher start app\n\n\n\n\n\n\n\nSuccess\n\n\nYour discourse instance is now available at \ndiscourse.example.com\n. If you have setup your \n.toml\n correctly your discourse instance will be available via \nhttps://", 
+            "text": "Traefik\n\n\nIf you have chosen to use traefik as proxy-server you need to do a few things:\n\n\nChange TCP/IP Ports\n\n\nTo install behind a proxy server, look for this section in the \napp.yml\n and change the external ports\n\n\n## which TCP/IP ports should this container expose?\n\n\n## If you want Discourse to share a port with another webserver like Apache or nginx,\n\n\n## see https://meta.discourse.org/t/17247 for details\n\nexpose:\n  - \n80:80\n   \n# http\n\n  - \n443:443\n \n# https\n\n\n\n\n\n\nand change it to something alike:\n\n\nexpose:\n  - \n7890:80\n   \n# http\n\n  - \n7891:443\n \n# https\n\ndocker_args:\n  - \n--network=web\n\n  - \n--expose=80\n\n  - \n-l traefik.backend=forum\n\n  - \n-l traefik.frontend.rule=Host:discourse.example.com\n\n  - \n-l traefik.docker.network=web\n\n  - \n-l traefik.port=80\n\n\n\n\n\n\nBuild and launch\n\n\nAfter every change to the \napp.yml\n you need to rebuild your discourse application:\n\n\n./launcher rebuild app\n./launcher start app\n\n\n\n\n\n\n\nSuccess\n\n\nYour discourse instance is now available at \ndiscourse.example.com\n. If you have setup your \n.toml\n correctly your discourse instance will be available via \nhttps://", 
             "title": "traefik"
         }, 
         {
@@ -82,7 +82,47 @@
         }, 
         {
             "location": "/installation/proxy_server/traefik/#build-and-launch", 
-            "text": "After every change to the  app.yml  you need to rebuild your discourse application:  ./launcher bootstrap app\n./launcher start app   Success  Your discourse instance is now available at  discourse.example.com . If you have setup your  .toml  correctly your discourse instance will be available via  https://", 
+            "text": "After every change to the  app.yml  you need to rebuild your discourse application:  ./launcher rebuild app\n./launcher start app   Success  Your discourse instance is now available at  discourse.example.com . If you have setup your  .toml  correctly your discourse instance will be available via  https://", 
+            "title": "Build and launch"
+        }, 
+        {
+            "location": "/installation/proxy_server/nginx/", 
+            "text": "Nginx\n\n\nIf you have chosen to use nginx as proxy-server you need to do a few things:\n\n\nChange TCP/IP Ports\n\n\nTo install behind a proxy server, look for this section in the \napp.yml\n and change the external ports\n\n\n## which TCP/IP ports should this container expose?\n\n\n## If you want Discourse to share a port with another webserver like Apache or nginx,\n\n\n## see https://meta.discourse.org/t/17247 for details\n\nexpose:\n  - \n80:80\n   \n# http\n\n  - \n443:443\n \n# https\n\n\n\n\n\n\nand change it to something alike:\n\n\nexpose:\n  - \n7890:80\n   \n# http\n\n  - \n7891:443\n \n# https\n\n\n\n\n\n\nSetup nginx proxy-pass\n\n\nNext we need to tell nginx to proxy pass our pre-defined ports; we do this by creating a configuration file for the forum:\n\n\nvi /etc/nginx/sites-available/discourse\n\n\n\n\n\nand set the contents to:\n\n\nserver \n{\n\n    listen \n80\n;\n\n    server_name discourse.example.com\n;\n\n\n    location / \n{\n\n        proxy_pass http://127.0.0.1:7890\n;\n\n    \n}\n\n\n}\n\n\n\n\n\n\nEnable new site configuration\n\n\nln -s /etc/nginx/sites-available/discourse /etc/nginx-sites-enabled/discourse\n\n\n\n\n\nTest nginx\n\n\nnginx -t\n\n\n\n\n\nSuccessful test should yield an output of:\n\n\n\u279c  ~ nginx -t\nnginx: the configuration file /etc/nginx/nginx.conf syntax is ok\nnginx: configuration file /etc/nginx/nginx.conf \ntest\n is successful\n\n\n\n\n\nRestart nginx to apply new settings\n\n\nsystemctl restart nginx\n\n\n\n\n\nBuild and launch\n\n\nAfter every change to the \napp.yml\n you need to rebuild your discourse application:\n\n\n./launcher rebuild app\n./launcher start app\n\n\n\n\n\n\n\nSuccess\n\n\nYour discourse instance is now available at \ndiscourse.example.com\n.", 
+            "title": "nginx"
+        }, 
+        {
+            "location": "/installation/proxy_server/nginx/#nginx", 
+            "text": "If you have chosen to use nginx as proxy-server you need to do a few things:", 
+            "title": "Nginx"
+        }, 
+        {
+            "location": "/installation/proxy_server/nginx/#change-tcpip-ports", 
+            "text": "To install behind a proxy server, look for this section in the  app.yml  and change the external ports  ## which TCP/IP ports should this container expose?  ## If you want Discourse to share a port with another webserver like Apache or nginx,  ## see https://meta.discourse.org/t/17247 for details \nexpose:\n  -  80:80     # http \n  -  443:443   # https   and change it to something alike:  expose:\n  -  7890:80     # http \n  -  7891:443   # https", 
+            "title": "Change TCP/IP Ports"
+        }, 
+        {
+            "location": "/installation/proxy_server/nginx/#setup-nginx-proxy-pass", 
+            "text": "Next we need to tell nginx to proxy pass our pre-defined ports; we do this by creating a configuration file for the forum:  vi /etc/nginx/sites-available/discourse  and set the contents to:  server  { \n    listen  80 ; \n    server_name discourse.example.com ; \n\n    location /  { \n        proxy_pass http://127.0.0.1:7890 ; \n     }  }", 
+            "title": "Setup nginx proxy-pass"
+        }, 
+        {
+            "location": "/installation/proxy_server/nginx/#enable-new-site-configuration", 
+            "text": "ln -s /etc/nginx/sites-available/discourse /etc/nginx-sites-enabled/discourse", 
+            "title": "Enable new site configuration"
+        }, 
+        {
+            "location": "/installation/proxy_server/nginx/#test-nginx", 
+            "text": "nginx -t  Successful test should yield an output of:  \u279c  ~ nginx -t\nnginx: the configuration file /etc/nginx/nginx.conf syntax is ok\nnginx: configuration file /etc/nginx/nginx.conf  test  is successful", 
+            "title": "Test nginx"
+        }, 
+        {
+            "location": "/installation/proxy_server/nginx/#restart-nginx-to-apply-new-settings", 
+            "text": "systemctl restart nginx", 
+            "title": "Restart nginx to apply new settings"
+        }, 
+        {
+            "location": "/installation/proxy_server/nginx/#build-and-launch", 
+            "text": "After every change to the  app.yml  you need to rebuild your discourse application:  ./launcher rebuild app\n./launcher start app   Success  Your discourse instance is now available at  discourse.example.com .", 
             "title": "Build and launch"
         }, 
         {
