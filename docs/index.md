@@ -18,8 +18,8 @@ This SeAT-Package is based upon [SPINEN's Discourse SSO for Laravel](https://git
 The Guide is mainly aimed for any herpaderps (like myself) that needs a step-by-step guide to install discourse and link it to SeAT. The second goal this guide tries to achieve is to convince others to use Discourse with SeAT. This Guide covers the following:
 
 1. [Discourse installation](/installation/discourse_installation)
-2. [Proxyserver configuration](/installation/proxy_server/traefik) (traefik only atm.)
-2. [SeAT-Discourse package installations](/installation/package_installation)
+2. Proxyserver configuration:  [Traefik](/installation/proxy_server/traefik) or [nginx](/installation/proxy_server/nginx)
+3. [SeAT-Discourse package installations](/installation/package_installation)
 3. Practical guides (WIP)
 
 ## Screenshots
