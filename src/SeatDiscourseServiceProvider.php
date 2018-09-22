@@ -3,10 +3,9 @@
 namespace Herpaderpaldent\Seat\SeatDiscourse;
 
 use Herpaderpaldent\Seat\SeatDiscourse\Commands\SyncRolesWithDiscourse;
-use Herpaderpaldent\Seat\SeatDiscourse\Events\Register;
+use Herpaderpaldent\Seat\SeatDiscourse\Observers\RefreshTokenObserver;
 use Illuminate\Support\ServiceProvider;
-use Illuminate\Contracts\Routing\Registrar as Router;
-use Illuminate\Auth\Events\Registered as RegisterEvent;
+use Seat\Eveapi\Models\RefreshToken;
 
 
 class SeatDiscourseServiceProvider extends ServiceProvider
@@ -20,7 +19,9 @@ class SeatDiscourseServiceProvider extends ServiceProvider
     {
         $this->addCommands();
         $this->addRoutes();
-        $this->addEvents();
+        $this->addViews();
+
+        RefreshToken::observe(RefreshTokenObserver::class);
 
     }
 
@@ -31,17 +32,11 @@ class SeatDiscourseServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->mergeConfigFrom(
-            __DIR__ . '/config/seatdiscourse.sidebar.php', 'package.sidebar');
-    }
-
-    private function addEvents()
-    {
-
-        // Internal Authentication Events
-        //$this->app->events->listen(RegisterEvent::class, Register::class);
+        $this->mergeConfigFrom(__DIR__ . '/config/seatdiscourse.sidebar.php', 'package.sidebar');
+        $this->mergeConfigFrom(__DIR__ . '/config/seatdiscourse.config.php', 'seatdiscourse.config');
 
     }
+
     private function addCommands()
     {
 
@@ -49,8 +44,13 @@ class SeatDiscourseServiceProvider extends ServiceProvider
             SyncRolesWithDiscourse::class,
         ]);
 
-
     }
+
+    private function addViews()
+    {
+        $this->loadViewsFrom(__DIR__ . '/resources/views', 'seatdiscourse');
+    }
+
     private function addRoutes()
     {
         if (!$this->app->routesAreCached()) {

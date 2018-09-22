@@ -8,9 +8,21 @@
 
 return [
     'seatdiscorse' => [
-        'name' => 'SeAT Discourse Forum',
+        'name' => 'SeAT Discourse',
         'icon' => 'fa-comments-o',
         'route_segment' => 'sso',
-        'route' => 'sso.forum'
+        'entries' => [
+            [
+                'name' => 'Forum',
+                'icon' => 'fa-commenting-o',
+                'route' => 'sso.forum'
+            ],
+            [
+                'name' => 'About',
+                'icon' => 'fa-info-circle',
+                'route' => 'seatdiscourse.about'
+            ]
+        ]
+
     ]
 ];

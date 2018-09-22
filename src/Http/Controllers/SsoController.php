@@ -159,9 +159,12 @@ class SsoController extends Controller
     /**
      * Process the SSO login request from Discourse
      *
-     * @param Request $request
+     * @param Request                                                          $request
+     *
+     * @param \Herpaderpaldent\Seat\SeatDiscourse\Action\Discourse\Groups\Sync $sync
      *
      * @return mixed
+     * @throws \Cviebrock\DiscoursePHP\Exception\PayloadException
      */
     public function login(Request $request, Sync $sync)
     {
@@ -173,6 +176,10 @@ class SsoController extends Controller
 
         $this->user = $request->user();
 
+        foreach ($this->user->group->users as $user){
+            if (is_null($user->refresh_token))
+                return redirect()->route('profile.view')->with('error','One of your characters is missing its refresh token. Please login with him again');
+        }
 
 
         if (! ($this->sso->validatePayload($payload = $request->get('sso'), $request->get('sig')))) {
