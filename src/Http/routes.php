@@ -20,5 +20,9 @@ Route::group([
             'uses' => 'SsoController@redirect',
             'as'   => 'sso.forum',
         ]);
+        Route::get('discourse/about', [
+            'uses' => 'SeatDiscourseController@getAbout',
+            'as'   => 'seatdiscourse.about',
+        ]);
     });
 });
