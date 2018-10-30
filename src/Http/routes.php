@@ -3,15 +3,14 @@
  * Created by PhpStorm.
  *  * User: Herpaderp Aldent
  * Date: 08.06.2018
- * Time: 22:14
+ * Time: 22:14.
  */
-
 Route::group([
-    'namespace' => 'Herpaderpaldent\Seat\SeatDiscourse\Http\Controllers'
-], function (){
+    'namespace' => 'Herpaderpaldent\Seat\SeatDiscourse\Http\Controllers',
+], function () {
     Route::group([
-        'middleware' => ['web', 'auth']
-    ], function (){
+        'middleware' => ['web', 'auth'],
+    ], function () {
         Route::get('discourse/sso', [
             'uses' => 'SsoController@login',
             'as'   => 'sso.login',
