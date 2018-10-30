@@ -3,13 +3,13 @@
  * Created by PhpStorm.
  * User: felix
  * Date: 21.09.2018
- * Time: 21:51
+ * Time: 21:51.
  */
 
 namespace Herpaderpaldent\Seat\SeatDiscourse\Action\Discourse\Users;
 
-use GuzzleHttp\Exception\GuzzleException;
 use GuzzleHttp\Client;
+use GuzzleHttp\Exception\GuzzleException;
 
 class GetUserByCharacterId
 {
@@ -17,10 +17,10 @@ class GetUserByCharacterId
     {
         $client = new Client();
         try {
-            $response = $client->request('GET', getenv('DISCOURSE_URL').'/users/by-external/'. $id .'.json', [
+            $response = $client->request('GET', getenv('DISCOURSE_URL') . '/users/by-external/' . $id . '.json', [
                 'query' => [
                     'api_key' => getenv('DISCOURSE_API_KEY'),
-                    'api_username' => getenv('DISCOURSE_API_USERNAME')
+                    'api_username' => getenv('DISCOURSE_API_USERNAME'),
                 ],
             ]);
 
@@ -29,5 +29,4 @@ class GetUserByCharacterId
             return $e;
         }
     }
-
 }

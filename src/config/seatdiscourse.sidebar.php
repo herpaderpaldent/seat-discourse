@@ -3,7 +3,7 @@
  * Created by PhpStorm.
  *  * User: Herpaderp Aldent
  * Date: 09.06.2018
- * Time: 18:56
+ * Time: 18:56.
  */
 
 return [
@@ -15,14 +15,14 @@ return [
             [
                 'name' => 'Forum',
                 'icon' => 'fa-commenting-o',
-                'route' => 'sso.forum'
+                'route' => 'sso.forum',
             ],
             [
                 'name' => 'About',
                 'icon' => 'fa-info-circle',
-                'route' => 'seatdiscourse.about'
-            ]
-        ]
+                'route' => 'seatdiscourse.about',
+            ],
+        ],
 
-    ]
+    ],
 ];

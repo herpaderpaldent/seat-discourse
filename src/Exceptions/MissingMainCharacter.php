@@ -1,8 +1,6 @@
 <?php
 
-
 namespace Herpaderpaldent\Seat\SeatDiscourse\Exceptions;
-
 
 use Exception;
 use Seat\Web\Models\Group;

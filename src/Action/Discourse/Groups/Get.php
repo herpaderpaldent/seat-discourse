@@ -3,13 +3,13 @@
  * Created by PhpStorm.
  * User: fehu
  * Date: 05.06.18
- * Time: 13:13
+ * Time: 13:13.
  */
 
 namespace Herpaderpaldent\Seat\SeatDiscourse\Action\Discourse\Groups;
 
-use GuzzleHttp\Exception\GuzzleException;
 use GuzzleHttp\Client;
+use GuzzleHttp\Exception\GuzzleException;
 
 class Get
 {
@@ -17,13 +17,13 @@ class Get
     {
         $client = new Client();
         try {
-            $response = $client->request('GET', getenv('DISCOURSE_URL').'/groups/search.json', [
+            $response = $client->request('GET', getenv('DISCOURSE_URL') . '/groups/search.json', [
                 'query' => [
                     'api_key' => getenv('DISCOURSE_API_KEY'),
-                    'api_username' => getenv('DISCOURSE_API_USERNAME')
+                    'api_username' => getenv('DISCOURSE_API_USERNAME'),
                     ],
             ]);
-            $body = collect(json_decode($response->getBody()))->reject(function ($item){
+            $body = collect(json_decode($response->getBody()))->reject(function ($item) {
                 return $item->automatic;
             });
 
@@ -33,5 +33,4 @@ class Get
         }
 
     }
-
 }

@@ -3,16 +3,15 @@
  * Created by PhpStorm.
  * User: felix
  * Date: 21.09.2018
- * Time: 23:22
+ * Time: 23:22.
  */
 
 namespace Herpaderpaldent\Seat\SeatDiscourse\Jobs;
 
-
-use Herpaderpaldent\Seat\SeatDiscourse\Exceptions\MissingMainCharacterException;
-use Seat\Web\Models\Group;
-use Illuminate\Support\Facades\Redis;
 use GuzzleHttp\Client;
+use Herpaderpaldent\Seat\SeatDiscourse\Exceptions\MissingMainCharacterException;
+use Illuminate\Support\Facades\Redis;
+use Seat\Web\Models\Group;
 
 class Logout extends SeatDiscourseJobBase
 {
@@ -84,10 +83,10 @@ class Logout extends SeatDiscourseJobBase
             $this->beforeStart();
 
             try {
-                $response = $this->client->request('POST', getenv('DISCOURSE_URL').'/admin/users/' . $this->discourse_user_id . '/log_out', [
+                $response = $this->client->request('POST', getenv('DISCOURSE_URL') . '/admin/users/' . $this->discourse_user_id . '/log_out', [
                     'form_params' => [
                         'api_key' => getenv('DISCOURSE_API_KEY'),
-                        'api_username' => getenv('DISCOURSE_API_USERNAME')
+                        'api_username' => getenv('DISCOURSE_API_USERNAME'),
                     ],
                 ]);
 
