@@ -1,3 +1,6 @@
+# Version 1.0.2
+Added Style CI to repo.
+
 # Version 1.0.1
 This version is a fix for logout job. It was bad designed as it resulted in a closure exception. This fix was provided by @warlof. Thank you very much.
 
