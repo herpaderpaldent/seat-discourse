@@ -1,3 +1,6 @@
+# Version 1.0.1
+This version is a fix for logout job. It was bad designed as it resulted in a closure exception. This fix was provided by @warlof. Thank you very much.
+
 # Version 1.0.0
 This is the first release with all its functionality. Since version 0.9.2 `SeAT-Discourse` was very stable and did not need a lot of refactoring or bug-fixing. However, i still had some ToDo's noted. The next few update still have some functional refactoring however functionally it does not change. Also some documentation will be added, whenever i find time and motivation to do so. 
 
