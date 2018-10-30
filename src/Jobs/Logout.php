@@ -3,15 +3,15 @@
  * Created by PhpStorm.
  * User: felix
  * Date: 21.09.2018
- * Time: 23:22
+ * Time: 23:22.
  */
 
 namespace Herpaderpaldent\Seat\SeatDiscourse\Jobs;
 
-
-use Seat\Web\Models\Group;
-use Illuminate\Support\Facades\Redis;
 use GuzzleHttp\Client;
+use Herpaderpaldent\Seat\SeatDiscourse\Exceptions\MissingMainCharacterException;
+use Illuminate\Support\Facades\Redis;
+use Seat\Web\Models\Group;
 
 class Logout extends SeatDiscourseJobBase
 {
@@ -20,11 +20,25 @@ class Logout extends SeatDiscourseJobBase
      */
     protected $tags = ['logout'];
 
+    /**
+     * @var \Seat\Web\Models\Group
+     */
     private $group;
 
+    /**
+     * @var \GuzzleHttp\Client
+     */
     private $client;
 
+    /**
+     * @var int
+     */
     private $discourse_user_id;
+
+    /**
+     * @var \Seat\Eveapi\Models\Character\CharacterInfo
+     */
+    private $main_character;
 
     /**
      * @var int
@@ -32,82 +46,81 @@ class Logout extends SeatDiscourseJobBase
     public $tries = 1;
 
     /**
-     * ConversationOrchestrator constructor.
+     * Logout constructor.
      *
      * @param \Seat\Web\Models\Group $group
      */
     public function __construct(Group $group)
     {
-
-        logger()->debug('Initialising SeAT discourse logout job for ' . $group->main_character->name);
-
         $this->group = $group;
+        $this->main_character = $this->group->main_character;
 
-        array_push($this->tags, 'main_character_id:' . $group->main_character_id);
+        if (is_null($this->main_character)) {
+            logger()->warning('Group has no main character set. Attempt to make assignation based on first attached character.', [
+                'group_id' => $this->group->id,
+            ]);
 
-        $this->client = new Client();
+            $this->main_character = $group->users->first()->character;
+        }
 
+        if (! is_null($this->main_character)) {
+            logger()->debug('Initialising SeAT discourse logout job for ' . $this->main_character->name);
+
+            array_push($this->tags, 'main_character_id:' . $this->main_character->character_id);
+        }
     }
 
+    /**
+     * @throws MissingMainCharacterException
+     */
     public function handle()
     {
-        Redis::funnel('seat-discourse:jobs.group_logout_' . $this->group->main_character_id)->limit(1)->then(function ()
-        {
+        if (is_null($this->main_character))
+            throw new MissingMainCharacterException($this->group);
+
+        Redis::funnel('seat-discourse:jobs.group_logout_' . $this->group->id)->limit(1)->then(function () {
+
             $this->beforeStart();
 
             try {
-                $response = $this->client->request('POST', getenv('DISCOURSE_URL').'/admin/users/' . $this->discourse_user_id . '/log_out', [
+                $response = $this->client->request('POST', getenv('DISCOURSE_URL') . '/admin/users/' . $this->discourse_user_id . '/log_out', [
                     'form_params' => [
                         'api_key' => getenv('DISCOURSE_API_KEY'),
-                        'api_username' => getenv('DISCOURSE_API_USERNAME')
+                        'api_username' => getenv('DISCOURSE_API_USERNAME'),
                     ],
                 ]);
 
-                logger()->debug(json_decode($response->getBody()));
-
-                $this->onFinish();
-
-
+                logger()->debug($response->getBody());
             } catch (\Throwable $exception) {
-
                 $this->onFail($exception);
-
             }
-
-        }, function ()
-        {
-            logger()->warning('A logout job is already running for ' . $this->group->main_character->name . ' Removing the job from the queue.');
+        }, function () {
+            logger()->warning('A logout job is already running for ' . $this->main_character->name . '. Removing the job from the queue.');
 
             $this->delete();
         });
-
-
     }
 
     public function beforeStart()
     {
-        $response = $this->client->request('GET', getenv('DISCOURSE_URL').'/users/by-external/'. $this->group->main_character_id .'.json', [
+        $this->client = new Client();
+
+        $uri = sprintf('%s/users/by-external/%d.json', getenv('DISCOURSE_URL'), $this->main_character->character_id);
+
+        $response = $this->client->request('GET', $uri, [
             'query' => [
                 'api_key' => getenv('DISCOURSE_API_KEY'),
-                'api_username' => getenv('DISCOURSE_API_USERNAME')
+                'api_username' => getenv('DISCOURSE_API_USERNAME'),
             ],
         ]);
 
-        $user = collect(json_decode($response->getBody()));
+        $json = json_decode($response->getBody());
 
-        $this->discourse_user_id = $user['user']->id;
-
+        $this->discourse_user_id = $json->user->id;
     }
 
     public function onFail($exception)
     {
-
         report($exception);
     }
-
-    public function onFinish()
-    {
-
-    }
-
 }

@@ -7,7 +7,6 @@ use Herpaderpaldent\Seat\SeatDiscourse\Observers\RefreshTokenObserver;
 use Illuminate\Support\ServiceProvider;
 use Seat\Eveapi\Models\RefreshToken;
 
-
 class SeatDiscourseServiceProvider extends ServiceProvider
 {
     /**
@@ -53,7 +52,7 @@ class SeatDiscourseServiceProvider extends ServiceProvider
 
     private function addRoutes()
     {
-        if (!$this->app->routesAreCached()) {
+        if (! $this->app->routesAreCached()) {
             include __DIR__ . '/Http/routes.php';
         }
     }

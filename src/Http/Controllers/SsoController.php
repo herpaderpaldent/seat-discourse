@@ -12,7 +12,7 @@ use Illuminate\Support\Collection;
 use Seat\Web\Models\Acl\Role;
 
 /**
- * Class SsoController
+ * Class SsoController.
  *
  * Controller to process the Discourse SSO request.  There is a good bit of logic in here that almost feels like too
  * much for a controller, but given that this is the only thing that this controller is doing, I am not going to break
@@ -23,21 +23,21 @@ use Seat\Web\Models\Acl\Role;
 class SsoController extends Controller
 {
     /**
-     * Package configuration
+     * Package configuration.
      *
      * @var Collection
      */
     protected $config;
 
     /**
-     * SSOHelper Instance
+     * SSOHelper Instance.
      *
      * @var SSOHelper
      */
     protected $sso;
 
     /**
-     * Authenticated user
+     * Authenticated user.
      *
      * @var User
      */
@@ -65,13 +65,13 @@ class SsoController extends Controller
         if (! auth()->user()->group->email) {
             return redirect()->route('profile.view')->with('error', 'You must enter an email address to use the forum.');
         }
+
         return redirect()->away(env('DISCOURSE_URL'));
 
     }
 
-
     /**
-     * Build out the extra parameters to send to Discourse
+     * Build out the extra parameters to send to Discourse.
      *
      * @return array
      */
@@ -88,13 +88,13 @@ class SsoController extends Controller
 
             // Groups to make sure that the user is part of in a comma-separated string
             // NOTE: Groups cannot have spaces in their names & must already exist in Discourse
-            'add_groups' => $this->user->group->roles->map(function ($role){return studly_case($role->title);})->implode(','),
+            'add_groups' => $this->user->group->roles->map(function ($role) {return studly_case($role->title); })->implode(','),
 
             // Boolean for user a Discourse admin, leave null to ignore
             //'admin' => null,
 
             // Full path to user's avatar image
-            'avatar_url' => 'http://image.eveonline.com/Character/'.$this->user->group->main_character_id.'_128.jpg',
+            'avatar_url' => 'http://image.eveonline.com/Character/' . $this->user->group->main_character_id . '_128.jpg',
 
             // The avatar is cached, so this triggers an update
             'avatar_force_update' => true,
@@ -113,7 +113,7 @@ class SsoController extends Controller
             // NOTE: Groups cannot have spaces in their names & must already exist in Discourse
             // There is not a way to specify the exact list of groups that a user is in, so
             // you may want to send the inverse of the 'add_groups'
-            'remove_groups' => Role::all()->diff($this->user->group->roles)->map(function ($role){return studly_case($role->title);})->implode(','),
+            'remove_groups' => Role::all()->diff($this->user->group->roles)->map(function ($role) {return studly_case($role->title); })->implode(','),
 
             // If the email has not been verified, set this to true
             'require_activation' => false,
@@ -125,7 +125,7 @@ class SsoController extends Controller
     }
 
     /**
-     * Make boolean's into string
+     * Make boolean's into string.
      *
      * The Discourse SSO API does not accept 0 or 1 for false or true.  You must send
      * "false" or "true", so convert any boolean property to the string version.
@@ -144,7 +144,7 @@ class SsoController extends Controller
     }
 
     /**
-     * Cache the configs on the object as a collection
+     * Cache the configs on the object as a collection.
      *
      * The 'user' property will be an array, so go ahead and convert it to a collection
      *
@@ -157,7 +157,7 @@ class SsoController extends Controller
     }*/
 
     /**
-     * Process the SSO login request from Discourse
+     * Process the SSO login request from Discourse.
      *
      * @param Request                                                          $request
      *
@@ -168,8 +168,8 @@ class SsoController extends Controller
      */
     public function login(Request $request, Sync $sync)
     {
-        if(!auth()->user()->group->email){
-            return redirect()->route('profile.view')->with('error','You must enter an email address to use the forum.');
+        if(! auth()->user()->group->email){
+            return redirect()->route('profile.view')->with('error', 'You must enter an email address to use the forum.');
         }
         //ToDo: Refactoring sync by replacing it with model events
         $sync->execute();
@@ -178,9 +178,8 @@ class SsoController extends Controller
 
         foreach ($this->user->group->users as $user){
             if (is_null($user->refresh_token))
-                return redirect()->route('profile.view')->with('error','One of your characters is missing its refresh token. Please login with him again');
+                return redirect()->route('profile.view')->with('error', 'One of your characters is missing its refresh token. Please login with him again');
         }
-
 
         if (! ($this->sso->validatePayload($payload = $request->get('sso'), $request->get('sig')))) {
             abort(403); //Forbidden
@@ -193,11 +192,11 @@ class SsoController extends Controller
             $this->buildExtraParameters()
         );
 
-        return redirect(str_finish(getenv('DISCOURSE_URL'), '/').'session/sso_login?'.$query);
+        return redirect(str_finish(getenv('DISCOURSE_URL'), '/') . 'session/sso_login?' . $query);
     }
 
     /**
-     * Check to see if property is null
+     * Check to see if property is null.
      *
      * @param string $property
      * @return bool
@@ -208,7 +207,7 @@ class SsoController extends Controller
     }
 
     /**
-     * Get the property from the user
+     * Get the property from the user.
      *
      * If a string is passed in, then get it from the user object, otherwise, return what was given
      *

@@ -21,7 +21,8 @@
         "php": ">=7.1",
         "cviebrock/discourse-php": "^0.9.3",
         "laravel/framework": "5.5.*",
-        "eveseat/web": "3.0.*"
+        "eveseat/web": "3.0.*",
+        "ext-json": "*"
     },
     "autoload": {
         "psr-4": {
