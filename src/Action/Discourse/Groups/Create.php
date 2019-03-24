@@ -15,7 +15,7 @@ use Herpaderpaldent\Seat\SeatDiscourse\Exceptions\DiscourseGuzzleException;
 class Create
 {
     /**
-     * @param String $groupname
+     * @param string $groupname
      *
      * @return string
      * @throws \Herpaderpaldent\Seat\SeatDiscourse\Exceptions\DiscourseGuzzleException
