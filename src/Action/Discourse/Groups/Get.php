@@ -10,10 +10,16 @@ namespace Herpaderpaldent\Seat\SeatDiscourse\Action\Discourse\Groups;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\GuzzleException;
+use Herpaderpaldent\Seat\SeatDiscourse\Exceptions\DiscourseGuzzleException;
+use Illuminate\Support\Collection;
 
 class Get
 {
-    public function execute()
+    /**
+     * @return \Illuminate\Support\Collection
+     * @throws \Herpaderpaldent\Seat\SeatDiscourse\Exceptions\DiscourseGuzzleException
+     */
+    public function execute() : Collection
     {
         $client = new Client();
         try {
@@ -29,7 +35,8 @@ class Get
 
             return $body;
         } catch (GuzzleException $e) {
-            return $e;
+
+            throw new DiscourseGuzzleException($e->getMessage(), $e->getCode());
         }
 
     }

@@ -10,10 +10,17 @@ namespace Herpaderpaldent\Seat\SeatDiscourse\Action\Discourse\Groups;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\GuzzleException;
+use Herpaderpaldent\Seat\SeatDiscourse\Exceptions\DiscourseGuzzleException;
 
 class Create
 {
-    public function execute(String $groupname)
+    /**
+     * @param String $groupname
+     *
+     * @return string
+     * @throws \Herpaderpaldent\Seat\SeatDiscourse\Exceptions\DiscourseGuzzleException
+     */
+    public function execute(String $groupname) : string
     {
         $client = new Client();
         try {
@@ -33,8 +40,8 @@ class Create
 
             abort(500, 'Something went wrong at /admin/groups');
         } catch (GuzzleException $e) {
-            return $e;
 
+            throw new DiscourseGuzzleException($e->getMessage(), $e->getCode());
         }
 
     }

@@ -10,9 +10,15 @@ namespace Herpaderpaldent\Seat\SeatDiscourse\Action\Discourse\Groups;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\GuzzleException;
+use Herpaderpaldent\Seat\SeatDiscourse\Exceptions\DiscourseGuzzleException;
 
 class Delete
 {
+    /**
+     * @param int $group_id
+     *
+     * @return string
+     */
     public function execute(int $group_id)
     {
 
@@ -33,8 +39,8 @@ class Delete
 
             abort(500, 'Something went wrong at deleting group');
         } catch (GuzzleException $e) {
-            return $e;
 
+            throw new DiscourseGuzzleException($e->getMessage(), $e->getCode());
         }
 
     }
