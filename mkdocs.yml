@@ -17,6 +17,9 @@ pages:
     - Proxy Server Configuration:
         - traefik: installation/proxy_server/traefik.md
         - nginx: installation/proxy_server/nginx.md
+    - Create Admin User:
+        Using Admin Sheet: installation/create_admin_user/using_admin_sheet.md
+        Using Ruby CLI: installation/create_admin_user/using_ruby_cli.md
     - Package Installation: installation/package_installation.md
 #        - CentOS: guides/installation/manual_installation/centos.md
 #        - Debian: guides/installation/manual_installation/debian.md
