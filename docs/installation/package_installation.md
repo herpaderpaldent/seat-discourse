@@ -9,7 +9,7 @@ In order to install SeAT-Discourse you must prepare some things and finally inst
 
 ### Create API key
 
-Navigate to `discourse.example.com` and log on. Top right press the 3 lines and select `Admin`. Go to API tab and press `Generate Master API Key`.
+Navigate to `discourse.example.com` and log on using the new Admin User. Top right press the 3 lines and select `Admin`. Go to API tab and press `Generate Master API Key`.
 
 Add the following values to your SeAT `.env` file:
 

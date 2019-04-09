@@ -20,7 +20,9 @@ The Guide is mainly aimed for any herpaderps (like myself) that needs a step-by-
 1. [Discourse installation](/installation/discourse_installation)
 2. Proxyserver configuration:  [Traefik](/installation/proxy_server/traefik) or [nginx](/installation/proxy_server/nginx)
 3. [SeAT-Discourse package installations](/installation/package_installation)
-3. Practical guides (WIP)
+4. Tips and tricks:
+    - Create dedicated [admin user](/tips_and_tricks/create_admin_user)
+
 
 ## Screenshots
 
