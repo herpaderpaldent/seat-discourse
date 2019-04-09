@@ -31,7 +31,7 @@ class Get
                     ],
             ]);
 
-            if(!$response->getCode() === 200)
+            if(! $response->getCode() === 200)
                 throw new Exception($response->getMessage(), $response->getCode());
 
             $body = collect(json_decode($response->getBody()))->reject(function ($item) {
