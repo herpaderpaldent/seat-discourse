@@ -8,12 +8,19 @@
 
 namespace Herpaderpaldent\Seat\SeatDiscourse\Action\Discourse\Groups;
 
+use Exception;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\GuzzleException;
+use Herpaderpaldent\Seat\SeatDiscourse\Exceptions\DiscourseGuzzleException;
+use Illuminate\Support\Collection;
 
 class Get
 {
-    public function execute()
+    /**
+     * @return \Illuminate\Support\Collection
+     * @throws \Herpaderpaldent\Seat\SeatDiscourse\Exceptions\DiscourseGuzzleException
+     */
+    public function execute() : Collection
     {
         $client = new Client();
         try {
@@ -23,13 +30,18 @@ class Get
                     'api_username' => getenv('DISCOURSE_API_USERNAME'),
                     ],
             ]);
+
+            if(! $response->getCode() === 200)
+                throw new Exception($response->getMessage(), $response->getCode());
+
             $body = collect(json_decode($response->getBody()))->reject(function ($item) {
                 return $item->automatic;
             });
 
             return $body;
         } catch (GuzzleException $e) {
-            return $e;
+
+            throw new DiscourseGuzzleException($e->getMessage(), $e->getCode());
         }
 
     }

@@ -8,6 +8,7 @@
 
 namespace Herpaderpaldent\Seat\SeatDiscourse\Action\Discourse\Groups;
 
+use Exception;
 use Illuminate\Support\Collection;
 
 class Detach
@@ -36,7 +37,9 @@ class Detach
             return 'Groups deleted ' . $groups_deleted;
 
         } catch (Exception $e){
-            return $e;
+
+            report($e);
+            throw $e;
         }
 
     }
