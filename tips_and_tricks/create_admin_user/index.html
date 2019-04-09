@@ -13,7 +13,7 @@
         <meta name="description" content="Simple EVE Api Tool Discourse Documentation">
       
       
-        <link rel="canonical" href="https://github.com/herpaderpaldent/seat-discourse/installation/proxy_server/nginx/">
+        <link rel="canonical" href="https://github.com/herpaderpaldent/seat-discourse/tips_and_tricks/create_admin_user/">
       
       
       
@@ -35,22 +35,22 @@
       
         <meta name="lang:search.tokenizer" content="[\s\-]+">
       
-      <link rel="shortcut icon" href="../../../assets/images/favicon.png">
+      <link rel="shortcut icon" href="../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-0.17.4, mkdocs-material-2.8.0">
     
     
       
-        <title>nginx - SeAT Discourse Documentation</title>
+        <title>Create Admin User - SeAT Discourse Documentation</title>
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/application.e8ff00e1.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/application.e8ff00e1.css">
       
-        <link rel="stylesheet" href="../../../assets/stylesheets/application-palette.6079476c.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/application-palette.6079476c.css">
       
     
     
-      <script src="../../../assets/javascripts/modernizr.1aa3b519.js"></script>
+      <script src="../../assets/javascripts/modernizr.1aa3b519.js"></script>
     
     
       <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
@@ -59,11 +59,11 @@
         <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
       
     
-    <link rel="stylesheet" href="../../../assets/fonts/material-icons.css">
+    <link rel="stylesheet" href="../../assets/fonts/material-icons.css">
     
-      <link rel="stylesheet" href="../../../css/extra_typo.css">
+      <link rel="stylesheet" href="../../css/extra_typo.css">
     
-      <link rel="stylesheet" href="../../../css/extra_tabs.css">
+      <link rel="stylesheet" href="../../css/extra_tabs.css">
     
     
   </head>
@@ -101,7 +101,7 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
     
-      <a href="#nginx" tabindex="1" class="md-skip">
+      <a href="#create-admin-user-using-ruby-cli" tabindex="1" class="md-skip">
         Skip to content
       </a>
     
@@ -127,7 +127,7 @@
                 SeAT Discourse Documentation
               </span>
               <span class="md-header-nav__topic">
-                nginx
+                Create Admin User
               </span>
             
           
@@ -244,7 +244,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../.." title="Home" class="md-nav__link">
+    <a href="../.." title="Home" class="md-nav__link">
       Home
     </a>
   </li>
@@ -256,7 +256,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../discourse_installation/" title="Discourse Installation" class="md-nav__link">
+    <a href="../../installation/discourse_installation/" title="Discourse Installation" class="md-nav__link">
       Discourse Installation
     </a>
   </li>
@@ -266,12 +266,10 @@
       
       
 
-  
 
-
-  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+  <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3" checked>
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
     
     <label class="md-nav__link" for="nav-3">
       Proxy Server Configuration
@@ -289,11 +287,61 @@
 
 
   <li class="md-nav__item">
-    <a href="../traefik/" title="traefik" class="md-nav__link">
+    <a href="../../installation/proxy_server/traefik/" title="traefik" class="md-nav__link">
       traefik
     </a>
   </li>
 
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../installation/proxy_server/nginx/" title="nginx" class="md-nav__link">
+      nginx
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../installation/package_installation/" title="Package Installation" class="md-nav__link">
+      Package Installation
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5" checked>
+    
+    <label class="md-nav__link" for="nav-5">
+      Tips and Tricks
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-5">
+        Tips and Tricks
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
         
           
           
@@ -310,11 +358,11 @@
     
     
       <label class="md-nav__link md-nav__link--active" for="__toc">
-        nginx
+        Create Admin User
       </label>
     
-    <a href="./" title="nginx" class="md-nav__link md-nav__link--active">
-      nginx
+    <a href="./" title="Create Admin User" class="md-nav__link md-nav__link--active">
+      Create Admin User
     </a>
     
       
@@ -328,44 +376,77 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#change-tcpip-ports" title="Change TCP/IP Ports" class="md-nav__link">
-    Change TCP/IP Ports
+  <a href="#create-admin-user-using-ruby-cli_1" title="Create Admin User using Ruby CLI" class="md-nav__link">
+    Create Admin User using Ruby CLI
   </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ssh-into-the-server" title="SSH into the Server" class="md-nav__link">
+    SSH into the Server
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#change-working-directory" title="Change working Directory" class="md-nav__link">
+    Change working Directory
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#enter-the-discourse-container" title="Enter the Discourse Container" class="md-nav__link">
+    Enter the Discourse Container
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#create-admin-user" title="Create Admin User" class="md-nav__link">
+    Create Admin User
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#setup-nginx-proxy-pass" title="Setup nginx proxy-pass" class="md-nav__link">
-    Setup nginx proxy-pass
+  <a href="#create-admin-user-using-admin-sheet" title="Create Admin User using Admin Sheet" class="md-nav__link">
+    Create Admin User using Admin Sheet
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#invite-user" title="Invite User" class="md-nav__link">
+    Invite User
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#enable-new-site-configuration" title="Enable new site configuration" class="md-nav__link">
-    Enable new site configuration
+        
+          <li class="md-nav__item">
+  <a href="#complete-user-registration" title="Complete User Registration" class="md-nav__link">
+    Complete User Registration
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#test-nginx" title="Test nginx" class="md-nav__link">
-    Test nginx
+        
+          <li class="md-nav__item">
+  <a href="#grant-admin-role" title="Grant Admin Role" class="md-nav__link">
+    Grant Admin Role
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#restart-nginx-to-apply-new-settings" title="Restart nginx to apply new settings" class="md-nav__link">
-    Restart nginx to apply new settings
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#build-and-launch" title="Build and launch" class="md-nav__link">
-    Build and launch
-  </a>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -377,54 +458,6 @@
   
 </nav>
     
-  </li>
-
-        
-      </ul>
-    </nav>
-  </li>
-
-    
-      
-      
-      
-
-
-  <li class="md-nav__item">
-    <a href="../../package_installation/" title="Package Installation" class="md-nav__link">
-      Package Installation
-    </a>
-  </li>
-
-    
-      
-      
-      
-
-
-  <li class="md-nav__item md-nav__item--nested">
-    
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5">
-    
-    <label class="md-nav__link" for="nav-5">
-      Tips and Tricks
-    </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
-      <label class="md-nav__title" for="nav-5">
-        Tips and Tricks
-      </label>
-      <ul class="md-nav__list" data-md-scrollfix>
-        
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../../tips_and_tricks/create_admin_user/" title="Create Admin User" class="md-nav__link">
-      Create Admin User
-    </a>
   </li>
 
         
@@ -454,44 +487,77 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#change-tcpip-ports" title="Change TCP/IP Ports" class="md-nav__link">
-    Change TCP/IP Ports
+  <a href="#create-admin-user-using-ruby-cli_1" title="Create Admin User using Ruby CLI" class="md-nav__link">
+    Create Admin User using Ruby CLI
   </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ssh-into-the-server" title="SSH into the Server" class="md-nav__link">
+    SSH into the Server
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#change-working-directory" title="Change working Directory" class="md-nav__link">
+    Change working Directory
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#enter-the-discourse-container" title="Enter the Discourse Container" class="md-nav__link">
+    Enter the Discourse Container
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#create-admin-user" title="Create Admin User" class="md-nav__link">
+    Create Admin User
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#setup-nginx-proxy-pass" title="Setup nginx proxy-pass" class="md-nav__link">
-    Setup nginx proxy-pass
+  <a href="#create-admin-user-using-admin-sheet" title="Create Admin User using Admin Sheet" class="md-nav__link">
+    Create Admin User using Admin Sheet
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#invite-user" title="Invite User" class="md-nav__link">
+    Invite User
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#enable-new-site-configuration" title="Enable new site configuration" class="md-nav__link">
-    Enable new site configuration
+        
+          <li class="md-nav__item">
+  <a href="#complete-user-registration" title="Complete User Registration" class="md-nav__link">
+    Complete User Registration
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#test-nginx" title="Test nginx" class="md-nav__link">
-    Test nginx
+        
+          <li class="md-nav__item">
+  <a href="#grant-admin-role" title="Grant Admin Role" class="md-nav__link">
+    Grant Admin Role
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#restart-nginx-to-apply-new-settings" title="Restart nginx to apply new settings" class="md-nav__link">
-    Restart nginx to apply new settings
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#build-and-launch" title="Build and launch" class="md-nav__link">
-    Build and launch
-  </a>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -511,81 +577,62 @@
             <article class="md-content__inner md-typeset">
               
                 
-                  <a href="https://github.com/herpaderpaldent/seat-discourse/edit/master/docs/installation/proxy_server/nginx.md" title="Edit this page" class="md-icon md-content__icon">&#xE3C9;</a>
+                  <a href="https://github.com/herpaderpaldent/seat-discourse/edit/master/docs/tips_and_tricks/create_admin_user.md" title="Edit this page" class="md-icon md-content__icon">&#xE3C9;</a>
                 
                 
                 <p><img alt="SeAT" src="https://i.imgur.com/aPPOxSK.png" /></p>
-<h1 id="nginx">Nginx<a class="headerlink" href="#nginx" title="Permanent link">&para;</a></h1>
-<p>If you have chosen to use nginx as proxy-server you need to do a few things:</p>
-<h2 id="change-tcpip-ports">Change TCP/IP Ports<a class="headerlink" href="#change-tcpip-ports" title="Permanent link">&para;</a></h2>
-<p>To install behind a proxy server, look for this section in the <code>app.yml</code> and change the external ports</p>
-<div class="codehilite"><pre><span></span><span class="c1">## which TCP/IP ports should this container expose?</span>
-<span class="c1">## If you want Discourse to share a port with another webserver like Apache or nginx,</span>
-<span class="c1">## see https://meta.discourse.org/t/17247 for details</span>
-expose:
-  - <span class="s2">&quot;80:80&quot;</span>   <span class="c1"># http</span>
-  - <span class="s2">&quot;443:443&quot;</span> <span class="c1"># https</span>
-</pre></div>
-
-
-<p>and change it to something alike:</p>
-<div class="codehilite"><pre><span></span>expose:
-  - <span class="s2">&quot;7890:80&quot;</span>   <span class="c1"># http</span>
-  - <span class="s2">&quot;7891:443&quot;</span> <span class="c1"># https</span>
-</pre></div>
-
-
-<h2 id="setup-nginx-proxy-pass">Setup nginx proxy-pass<a class="headerlink" href="#setup-nginx-proxy-pass" title="Permanent link">&para;</a></h2>
-<p>Next we need to tell nginx to proxy pass our pre-defined ports; we do this by creating a configuration file for the forum:</p>
-<div class="codehilite"><pre><span></span>vi /etc/nginx/sites-available/discourse
-</pre></div>
-
-
-<p>and set the contents to:</p>
-<div class="codehilite"><pre><span></span>server <span class="o">{</span>
-    listen <span class="m">80</span><span class="p">;</span>
-    server_name discourse.example.com<span class="p">;</span>
-
-    location / <span class="o">{</span>
-        proxy_pass http://127.0.0.1:7890<span class="p">;</span>
-    <span class="o">}</span>
-<span class="o">}</span>
-</pre></div>
-
-
-<h2 id="enable-new-site-configuration">Enable new site configuration<a class="headerlink" href="#enable-new-site-configuration" title="Permanent link">&para;</a></h2>
-<div class="codehilite"><pre><span></span>ln -s /etc/nginx/sites-available/discourse /etc/nginx-sites-enabled/discourse
-</pre></div>
-
-
-<h2 id="test-nginx">Test nginx<a class="headerlink" href="#test-nginx" title="Permanent link">&para;</a></h2>
-<div class="codehilite"><pre><span></span>nginx -t
-</pre></div>
-
-
-<p>Successful test should yield an output of:</p>
-<div class="codehilite"><pre><span></span>➜  ~ nginx -t
-nginx: the configuration file /etc/nginx/nginx.conf syntax is ok
-nginx: configuration file /etc/nginx/nginx.conf <span class="nb">test</span> is successful
-</pre></div>
-
-
-<h2 id="restart-nginx-to-apply-new-settings">Restart nginx to apply new settings<a class="headerlink" href="#restart-nginx-to-apply-new-settings" title="Permanent link">&para;</a></h2>
-<div class="codehilite"><pre><span></span>systemctl restart nginx
-</pre></div>
-
-
-<h2 id="build-and-launch">Build and launch<a class="headerlink" href="#build-and-launch" title="Permanent link">&para;</a></h2>
-<p>After every change to the <code>app.yml</code> you need to rebuild your discourse application:</p>
-<div class="codehilite"><pre><span></span>./launcher rebuild app
-./launcher start app
-</pre></div>
-
-
-<div class="admonition success">
-<p class="admonition-title">Success</p>
-<p>Your discourse instance is now available at <code>discourse.example.com</code>. </p>
+<h1 id="create-admin-user-using-ruby-cli">Create Admin User using Ruby CLI<a class="headerlink" href="#create-admin-user-using-ruby-cli" title="Permanent link">&para;</a></h1>
+<p>Creating a dedicated Admin User will prevent issues with SSO API key being invalidated due to username change, inactive tokens, character transfers, etc.</p>
+<h2 id="create-admin-user-using-ruby-cli_1">Create Admin User using Ruby CLI<a class="headerlink" href="#create-admin-user-using-ruby-cli_1" title="Permanent link">&para;</a></h2>
+<h3 id="ssh-into-the-server">SSH into the Server<a class="headerlink" href="#ssh-into-the-server" title="Permanent link">&para;</a></h3>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>You must have SSH access and elevated permissions to the server running Discourse to use this method.</p>
 </div>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>In this example we will be using a SSH RSA key to authenticate, if you use a username/password, adjust the code accordingly.</p>
+</div>
+<div class="codehilite"><pre><span></span>ssh -i id_rsa root@www.example.com
+</pre></div>
+
+
+<h3 id="change-working-directory">Change working Directory<a class="headerlink" href="#change-working-directory" title="Permanent link">&para;</a></h3>
+<p>Change the shell working directory to the Discourse root directory. If you followed the installation instructions on this site, it should be <code>/opt/Discourse</code></p>
+<div class="codehilite"><pre><span></span>ccd /opt/discourse
+</pre></div>
+
+
+<h3 id="enter-the-discourse-container">Enter the Discourse Container<a class="headerlink" href="#enter-the-discourse-container" title="Permanent link">&para;</a></h3>
+<p>Using the <code>launcher</code> script, enter the Discourse Docker container</p>
+<div class="codehilite"><pre><span></span>./launcher enter app
+</pre></div>
+
+
+<h3 id="create-admin-user">Create Admin User<a class="headerlink" href="#create-admin-user" title="Permanent link">&para;</a></h3>
+<p>Using the Ruby <code>rake</code> CLI, initiate the admin user creation and fill in the prompts</p>
+<div class="codehilite"><pre><span></span>rake admin:create
+</pre></div>
+
+
+<p><img alt="create_admin_user_using_ruby_cli" src="../../img/create_admin_user_using_ruby_cli.png" /></p>
+<h2 id="create-admin-user-using-admin-sheet">Create Admin User using Admin Sheet<a class="headerlink" href="#create-admin-user-using-admin-sheet" title="Permanent link">&para;</a></h2>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Discourse must have a functional email provider configured and SSO must be disabled in order to use this method.</p>
+</div>
+<h3 id="invite-user">Invite User<a class="headerlink" href="#invite-user" title="Permanent link">&para;</a></h3>
+<p>Navigate to <code>discourse.example.com</code> and log on, top right press the 3 lines and select <code>Admin</code>, then go to the User tab and press <code>Send an Invite</code> button</p>
+<p><a href="../../img/create_admin_user_using_admin_sheet_1.png"><img alt="create_admin_user_using_admin_sheet_1" src="../../img/create_admin_user_using_admin_sheet_1.png" /></a></p>
+<p>Once on the User tab, press the <code>Send an Invite</code> button again to open the invite dialog; input the email address you intend to use for your Admin User and click <code>Invite</code></p>
+<p><a href="../../img/create_admin_user_using_admin_sheet_2.png"><img alt="create_admin_user_using_admin_sheet_1" src="../../img/create_admin_user_using_admin_sheet_2.png" /></a></p>
+<h3 id="complete-user-registration">Complete User Registration<a class="headerlink" href="#complete-user-registration" title="Permanent link">&para;</a></h3>
+<p>Wait to receive Discourse email invite at your Admin User's email (ussually takes less than a minute) and use the link in the email to complete the Admin User registration 
+(be sure to use a seperate browser instance to not logout your main Admin).</p>
+<h3 id="grant-admin-role">Grant Admin Role<a class="headerlink" href="#grant-admin-role" title="Permanent link">&para;</a></h3>
+<p>Using your original Admin account, from the User tab, find an click on the new Admin User that you created, scroll down to the <code>Permissions</code> section, locate and press the <code>Grant Admin</code> button.</p>
+<p>Your initial Admin account will be sent a confirmation email, which will contain a link to confirm and finalize the granting of Admin roles.</p>
+<p><a href="../../img/create_admin_user_using_admin_sheet_3.png"><img alt="create_admin_user_using_admin_sheet_3" src="../../img/create_admin_user_using_admin_sheet_3.png" /></a></p>
                 
                   
                 
@@ -606,7 +653,7 @@ nginx: configuration file /etc/nginx/nginx.conf <span class="nb">test</span> is 
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid">
         
-          <a href="../traefik/" title="traefik" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="../../installation/package_installation/" title="Package Installation" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-flex__cell md-flex__cell--shrink">
               <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
             </div>
@@ -615,25 +662,11 @@ nginx: configuration file /etc/nginx/nginx.conf <span class="nb">test</span> is 
                 <span class="md-footer-nav__direction">
                   Previous
                 </span>
-                traefik
-              </span>
-            </div>
-          </a>
-        
-        
-          <a href="../../package_installation/" title="Package Installation" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
-            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
-              <span class="md-flex__ellipsis">
-                <span class="md-footer-nav__direction">
-                  Next
-                </span>
                 Package Installation
               </span>
             </div>
-            <div class="md-flex__cell md-flex__cell--shrink">
-              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
-            </div>
           </a>
+        
         
       </nav>
     </div>
@@ -655,7 +688,7 @@ nginx: configuration file /etc/nginx/nginx.conf <span class="nb">test</span> is 
       
         
   <div class="md-footer-social">
-    <link rel="stylesheet" href="../../../assets/fonts/font-awesome.css">
+    <link rel="stylesheet" href="../../assets/fonts/font-awesome.css">
     
       <a href="https://github.com/herpaderpaldent/seat-discourse" class="md-footer-social__link fa fa-github"></a>
     
@@ -668,11 +701,11 @@ nginx: configuration file /etc/nginx/nginx.conf <span class="nb">test</span> is 
       
     </div>
     
-      <script src="../../../assets/javascripts/application.a59e2a89.js"></script>
+      <script src="../../assets/javascripts/application.a59e2a89.js"></script>
       
-      <script>app.initialize({version:"0.17.4",url:{base:"../../.."}})</script>
+      <script>app.initialize({version:"0.17.4",url:{base:"../.."}})</script>
       
-        <script src="../../../js/extra_tabs.js"></script>
+        <script src="../../js/extra_tabs.js"></script>
       
     
     

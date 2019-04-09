@@ -2,7 +2,7 @@
     "docs": [
         {
             "location": "/", 
-            "text": "Hepraderp Aldent's - SeAT Discourse\n\n\nWelcome to the \nSeAT Discourse\n documentation pages!\n\n\n\n\nThis SeAT-Package is based upon \nSPINEN's Discourse SSO for Laravel\n and extended with various functions to support eve online use cases and SeAT roles.\n\nDiscourse\n is the leading free, open source application for moder web discussion forums. It is the very same forum that \neve-online forum\n uses!\n\n\nPrerequisite\n\n\n\n\nSeAT 3.0\n \n\n\n\n\nTable of Content\n\n\nThe Guide is mainly aimed for any herpaderps (like myself) that needs a step-by-step guide to install discourse and link it to SeAT. The second goal this guide tries to achieve is to convince others to use Discourse with SeAT. This Guide covers the following:\n\n\n\n\nDiscourse installation\n\n\nProxyserver configuration:  \nTraefik\n or \nnginx\n\n\nSeAT-Discourse package installations\n\n\nPractical guides (WIP)\n\n\n\n\nScreenshots\n\n\n\n\n\n\nContact\n\n\nIf you like this package feel free to donate some ISK's to Herpaderp Aldent. If you have feedback, found some bugs or got a feature request. Feel free to open an issue on \nGithub", 
+            "text": "Hepraderp Aldent's - SeAT Discourse\n\n\nWelcome to the \nSeAT Discourse\n documentation pages!\n\n\n\n\nThis SeAT-Package is based upon \nSPINEN's Discourse SSO for Laravel\n and extended with various functions to support eve online use cases and SeAT roles.\n\nDiscourse\n is the leading free, open source application for moder web discussion forums. It is the very same forum that \neve-online forum\n uses!\n\n\nPrerequisite\n\n\n\n\nSeAT 3.0\n \n\n\n\n\nTable of Content\n\n\nThe Guide is mainly aimed for any herpaderps (like myself) that needs a step-by-step guide to install discourse and link it to SeAT. The second goal this guide tries to achieve is to convince others to use Discourse with SeAT. This Guide covers the following:\n\n\n\n\nDiscourse installation\n\n\nProxyserver configuration:  \nTraefik\n or \nnginx\n\n\nSeAT-Discourse package installations\n\n\nTips and tricks:\n\n\nCreate dedicated \nadmin user\n\n\n\n\n\n\n\n\nScreenshots\n\n\n\n\n\n\nContact\n\n\nIf you like this package feel free to donate some ISK's to Herpaderp Aldent. If you have feedback, found some bugs or got a feature request. Feel free to open an issue on \nGithub", 
             "title": "Home"
         }, 
         {
@@ -17,7 +17,7 @@
         }, 
         {
             "location": "/#table-of-content", 
-            "text": "The Guide is mainly aimed for any herpaderps (like myself) that needs a step-by-step guide to install discourse and link it to SeAT. The second goal this guide tries to achieve is to convince others to use Discourse with SeAT. This Guide covers the following:   Discourse installation  Proxyserver configuration:   Traefik  or  nginx  SeAT-Discourse package installations  Practical guides (WIP)", 
+            "text": "The Guide is mainly aimed for any herpaderps (like myself) that needs a step-by-step guide to install discourse and link it to SeAT. The second goal this guide tries to achieve is to convince others to use Discourse with SeAT. This Guide covers the following:   Discourse installation  Proxyserver configuration:   Traefik  or  nginx  SeAT-Discourse package installations  Tips and tricks:  Create dedicated  admin user", 
             "title": "Table of Content"
         }, 
         {
@@ -127,7 +127,7 @@
         }, 
         {
             "location": "/installation/package_installation/", 
-            "text": "SeAT-Discourse Installation\n\n\nIn order to install SeAT-Discourse you must prepare some things and finally install the plugin:\n\n\nPreparation\n\n\nCreate API key\n\n\nNavigate to \ndiscourse.example.com\n and log on. Top right press the 3 lines and select \nAdmin\n. Go to API tab and press \nGenerate Master API Key\n.\n\n\nAdd the following values to your SeAT \n.env\n file:\n\n\n\n\nDISCOURSE_URL\n: \nhttps://discourse.example.com\n (do not add a trailing slash!)\n\n\nDISCOURSE_API_USERNAME\n: the username of the admin account you generated the API key with\n\n\nDISCOURSE_API_KEY\n: the key you just generated\n\n\n\n\nConfigure SSO\n\n\nNavigate to \ndiscourse.example.com\n and log in. Back to the admin site, scroll down to find SSO settings and set the following:\n\n\n\n\nenable_sso\n: True\n\n\nsso_url\n: \nhttp://seat.example.com/discourse/sso\n\n\nsso_secret\n: some secure key\n\n\n\n\nSave, now set \nDISCOURSE_SECRET\n in your SeAT \n.env\n file to the secure key you just put in Discourse.\n\n\nPackage installation\n\n\nInstall Discourse SSO for Laravel:\n\n\n\n\n\n  \nDocker\n\n  \nNon-Docker\n\n\n\n\n\n\n\n\n    \nAdd \nherpaderpaldent/seat-discourse\n to SeAT Plugins list to install inside your \n.env\n\n\n    \n# SeAT Plugins\n    # This is a list of the all of the third party plugins that you\n    # would like to install as part of SeAT. Package names should be\n    # comma seperated if multiple packages should be installed.\n    SEAT_PLUGINS=herpaderpaldent/seat-discourse\n    \n\n\n\n\n\n\n    \nInside your SeAT Folder run the following:\n\n\n    \ncomposer require herpaderpaldent/seat-discourse\n\n\n\n\n\n\n\n\nadd the following to your SeAT \n.env\n file:\n\n\n\n\nDISCOURSE_URL\n (do not add a trailing slash!)\n\n\nDISCOURSE_API_USERNAME\n the username of the admin account you generated the API key with\n\n\nDISCOURSE_API_KEY\n the key you just generated\n\n\n\n\nDISCOURSE_URL\n=\nhttps://discourse.example.com\n\nDISCOURSE_API_USERNAME\n=\nusername\n\nDISCOURSE_API_KEY\n=\nkey\n\nDISCOURSE_SECRET\n=\nsecret\n\n\n\n\n\n\n\nHint\n\n\nIf you use Docker you need to run \ndocker-compose up -d\n in your \nopt/seat-docker\n folder.\n\n\n\n\n\n\nSuccess\n\n\nNow you got SeAT-Discourse installed. \n\n\n\n\nFor SeAT 3.0, you are done with the Install\n\n\nThe package uses the auto registration feature\n\n\nLeft to do\n\n\n\n\ndocument Discourse configuration\n\n\nsend \nlog out\n to Discourse when disabling/deleting the user\n\n\nfailed login redirect", 
+            "text": "SeAT-Discourse Installation\n\n\nIn order to install SeAT-Discourse you must prepare some things and finally install the plugin:\n\n\nPreparation\n\n\nCreate API key\n\n\nNavigate to \ndiscourse.example.com\n and log on using the new Admin User. Top right press the 3 lines and select \nAdmin\n. Go to API tab and press \nGenerate Master API Key\n.\n\n\nAdd the following values to your SeAT \n.env\n file:\n\n\n\n\nDISCOURSE_URL\n: \nhttps://discourse.example.com\n (do not add a trailing slash!)\n\n\nDISCOURSE_API_USERNAME\n: the username of the admin account you generated the API key with\n\n\nDISCOURSE_API_KEY\n: the key you just generated\n\n\n\n\nConfigure SSO\n\n\nNavigate to \ndiscourse.example.com\n and log in. Back to the admin site, scroll down to find SSO settings and set the following:\n\n\n\n\nenable_sso\n: True\n\n\nsso_url\n: \nhttp://seat.example.com/discourse/sso\n\n\nsso_secret\n: some secure key\n\n\n\n\nSave, now set \nDISCOURSE_SECRET\n in your SeAT \n.env\n file to the secure key you just put in Discourse.\n\n\nPackage installation\n\n\nInstall Discourse SSO for Laravel:\n\n\n\n\n\n  \nDocker\n\n  \nNon-Docker\n\n\n\n\n\n\n\n\n    \nAdd \nherpaderpaldent/seat-discourse\n to SeAT Plugins list to install inside your \n.env\n\n\n    \n# SeAT Plugins\n    # This is a list of the all of the third party plugins that you\n    # would like to install as part of SeAT. Package names should be\n    # comma seperated if multiple packages should be installed.\n    SEAT_PLUGINS=herpaderpaldent/seat-discourse\n    \n\n\n\n\n\n\n    \nInside your SeAT Folder run the following:\n\n\n    \ncomposer require herpaderpaldent/seat-discourse\n\n\n\n\n\n\n\n\nadd the following to your SeAT \n.env\n file:\n\n\n\n\nDISCOURSE_URL\n (do not add a trailing slash!)\n\n\nDISCOURSE_API_USERNAME\n the username of the admin account you generated the API key with\n\n\nDISCOURSE_API_KEY\n the key you just generated\n\n\n\n\nDISCOURSE_URL\n=\nhttps://discourse.example.com\n\nDISCOURSE_API_USERNAME\n=\nusername\n\nDISCOURSE_API_KEY\n=\nkey\n\nDISCOURSE_SECRET\n=\nsecret\n\n\n\n\n\n\n\nHint\n\n\nIf you use Docker you need to run \ndocker-compose up -d\n in your \nopt/seat-docker\n folder.\n\n\n\n\n\n\nSuccess\n\n\nNow you got SeAT-Discourse installed. \n\n\n\n\nFor SeAT 3.0, you are done with the Install\n\n\nThe package uses the auto registration feature\n\n\nLeft to do\n\n\n\n\ndocument Discourse configuration\n\n\nsend \nlog out\n to Discourse when disabling/deleting the user\n\n\nfailed login redirect", 
             "title": "Package Installation"
         }, 
         {
@@ -142,7 +142,7 @@
         }, 
         {
             "location": "/installation/package_installation/#create-api-key", 
-            "text": "Navigate to  discourse.example.com  and log on. Top right press the 3 lines and select  Admin . Go to API tab and press  Generate Master API Key .  Add the following values to your SeAT  .env  file:   DISCOURSE_URL :  https://discourse.example.com  (do not add a trailing slash!)  DISCOURSE_API_USERNAME : the username of the admin account you generated the API key with  DISCOURSE_API_KEY : the key you just generated", 
+            "text": "Navigate to  discourse.example.com  and log on using the new Admin User. Top right press the 3 lines and select  Admin . Go to API tab and press  Generate Master API Key .  Add the following values to your SeAT  .env  file:   DISCOURSE_URL :  https://discourse.example.com  (do not add a trailing slash!)  DISCOURSE_API_USERNAME : the username of the admin account you generated the API key with  DISCOURSE_API_KEY : the key you just generated", 
             "title": "Create API key"
         }, 
         {
@@ -164,6 +164,61 @@
             "location": "/installation/package_installation/#left-to-do", 
             "text": "document Discourse configuration  send  log out  to Discourse when disabling/deleting the user  failed login redirect", 
             "title": "Left to do"
+        }, 
+        {
+            "location": "/tips_and_tricks/create_admin_user/", 
+            "text": "Create Admin User using Ruby CLI\n\n\nCreating a dedicated Admin User will prevent issues with SSO API key being invalidated due to username change, inactive tokens, character transfers, etc.\n\n\nCreate Admin User using Ruby CLI\n\n\nSSH into the Server\n\n\n\n\nHint\n\n\nYou must have SSH access and elevated permissions to the server running Discourse to use this method.\n\n\n\n\n\n\nInfo\n\n\nIn this example we will be using a SSH RSA key to authenticate, if you use a username/password, adjust the code accordingly.\n\n\n\n\nssh -i id_rsa root@www.example.com\n\n\n\n\n\nChange working Directory\n\n\nChange the shell working directory to the Discourse root directory. If you followed the installation instructions on this site, it should be \n/opt/Discourse\n\n\nccd /opt/discourse\n\n\n\n\n\nEnter the Discourse Container\n\n\nUsing the \nlauncher\n script, enter the Discourse Docker container\n\n\n./launcher enter app\n\n\n\n\n\nCreate Admin User\n\n\nUsing the Ruby \nrake\n CLI, initiate the admin user creation and fill in the prompts\n\n\nrake admin:create\n\n\n\n\n\n\n\nCreate Admin User using Admin Sheet\n\n\n\n\nWarning\n\n\nDiscourse must have a functional email provider configured and SSO must be disabled in order to use this method.\n\n\n\n\nInvite User\n\n\nNavigate to \ndiscourse.example.com\n and log on, top right press the 3 lines and select \nAdmin\n, then go to the User tab and press \nSend an Invite\n button\n\n\n\n\nOnce on the User tab, press the \nSend an Invite\n button again to open the invite dialog; input the email address you intend to use for your Admin User and click \nInvite\n\n\n\n\nComplete User Registration\n\n\nWait to receive Discourse email invite at your Admin User's email (ussually takes less than a minute) and use the link in the email to complete the Admin User registration \n(be sure to use a seperate browser instance to not logout your main Admin).\n\n\nGrant Admin Role\n\n\nUsing your original Admin account, from the User tab, find an click on the new Admin User that you created, scroll down to the \nPermissions\n section, locate and press the \nGrant Admin\n button.\n\n\nYour initial Admin account will be sent a confirmation email, which will contain a link to confirm and finalize the granting of Admin roles.", 
+            "title": "Create Admin User"
+        }, 
+        {
+            "location": "/tips_and_tricks/create_admin_user/#create-admin-user-using-ruby-cli", 
+            "text": "Creating a dedicated Admin User will prevent issues with SSO API key being invalidated due to username change, inactive tokens, character transfers, etc.", 
+            "title": "Create Admin User using Ruby CLI"
+        }, 
+        {
+            "location": "/tips_and_tricks/create_admin_user/#create-admin-user-using-ruby-cli_1", 
+            "text": "", 
+            "title": "Create Admin User using Ruby CLI"
+        }, 
+        {
+            "location": "/tips_and_tricks/create_admin_user/#ssh-into-the-server", 
+            "text": "Hint  You must have SSH access and elevated permissions to the server running Discourse to use this method.    Info  In this example we will be using a SSH RSA key to authenticate, if you use a username/password, adjust the code accordingly.   ssh -i id_rsa root@www.example.com", 
+            "title": "SSH into the Server"
+        }, 
+        {
+            "location": "/tips_and_tricks/create_admin_user/#change-working-directory", 
+            "text": "Change the shell working directory to the Discourse root directory. If you followed the installation instructions on this site, it should be  /opt/Discourse  ccd /opt/discourse", 
+            "title": "Change working Directory"
+        }, 
+        {
+            "location": "/tips_and_tricks/create_admin_user/#enter-the-discourse-container", 
+            "text": "Using the  launcher  script, enter the Discourse Docker container  ./launcher enter app", 
+            "title": "Enter the Discourse Container"
+        }, 
+        {
+            "location": "/tips_and_tricks/create_admin_user/#create-admin-user", 
+            "text": "Using the Ruby  rake  CLI, initiate the admin user creation and fill in the prompts  rake admin:create", 
+            "title": "Create Admin User"
+        }, 
+        {
+            "location": "/tips_and_tricks/create_admin_user/#create-admin-user-using-admin-sheet", 
+            "text": "Warning  Discourse must have a functional email provider configured and SSO must be disabled in order to use this method.", 
+            "title": "Create Admin User using Admin Sheet"
+        }, 
+        {
+            "location": "/tips_and_tricks/create_admin_user/#invite-user", 
+            "text": "Navigate to  discourse.example.com  and log on, top right press the 3 lines and select  Admin , then go to the User tab and press  Send an Invite  button   Once on the User tab, press the  Send an Invite  button again to open the invite dialog; input the email address you intend to use for your Admin User and click  Invite", 
+            "title": "Invite User"
+        }, 
+        {
+            "location": "/tips_and_tricks/create_admin_user/#complete-user-registration", 
+            "text": "Wait to receive Discourse email invite at your Admin User's email (ussually takes less than a minute) and use the link in the email to complete the Admin User registration \n(be sure to use a seperate browser instance to not logout your main Admin).", 
+            "title": "Complete User Registration"
+        }, 
+        {
+            "location": "/tips_and_tricks/create_admin_user/#grant-admin-role", 
+            "text": "Using your original Admin account, from the User tab, find an click on the new Admin User that you created, scroll down to the  Permissions  section, locate and press the  Grant Admin  button.  Your initial Admin account will be sent a confirmation email, which will contain a link to confirm and finalize the granting of Admin roles.", 
+            "title": "Grant Admin Role"
         }
     ]
 }
