@@ -94,7 +94,7 @@ class SsoController extends Controller
             //'admin' => null,
 
             // Full path to user's avatar image
-            'avatar_url' => 'http://image.eveonline.com/Character/' . $this->user->group->main_character_id . '_128.jpg',
+            'avatar_url' => 'https://image.eveonline.com/Character/' . $this->user->group->main_character_id . '_128.jpg',
 
             // The avatar is cached, so this triggers an update
             'avatar_force_update' => true,
