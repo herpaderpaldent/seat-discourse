@@ -25,7 +25,7 @@ class Delete
         $client = new Client();
         try {
             $response = $client->request('DELETE', getenv('DISCOURSE_URL') . '/admin/groups/' . $group_id . '.json', [
-                'form_params' => [
+                'headers' => [
                     'api_key'      => getenv('DISCOURSE_API_KEY'),
                     'api_username' => getenv('DISCOURSE_API_USERNAME'),
                 ],
