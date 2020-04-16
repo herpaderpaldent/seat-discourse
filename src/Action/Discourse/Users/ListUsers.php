@@ -27,7 +27,7 @@ class ListUsers
                 ],
                 'headers' => [
                     'api-key' => getenv('DISCOURSE_API_KEY'),
-                    'api-username' => getenv('DISCOURSE_API_USERNAME')
+                    'api-username' => getenv('DISCOURSE_API_USERNAME'),
                 ],
             ]);
 
