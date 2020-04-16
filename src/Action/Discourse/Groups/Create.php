@@ -20,7 +20,7 @@ class Create
      * @return string
      * @throws \Herpaderpaldent\Seat\SeatDiscourse\Exceptions\DiscourseGuzzleException
      */
-    public function execute(String $groupname) : string
+    public function execute(String $groupname): string
     {
         $client = new Client();
         try {

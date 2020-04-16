@@ -20,7 +20,7 @@ class Get
      * @return \Illuminate\Support\Collection
      * @throws \Herpaderpaldent\Seat\SeatDiscourse\Exceptions\DiscourseGuzzleException
      */
-    public function execute() : Collection
+    public function execute(): Collection
     {
         $client = new Client();
         try {
