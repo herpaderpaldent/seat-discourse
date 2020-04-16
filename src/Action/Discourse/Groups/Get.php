@@ -31,8 +31,8 @@ class Get
                     ],
             ]);
 
-            if(! $response->getCode() === 200)
-                throw new Exception($response->getMessage(), $response->getCode());
+            if(! $response->getStatusCode() === 200)
+                throw new Exception($response->getMessage(), $response->getStatusCode());
 
             $body = collect(json_decode($response->getBody()))->reject(function ($item) {
                 return $item->automatic;
@@ -41,7 +41,7 @@ class Get
             return $body;
         } catch (GuzzleException $e) {
 
-            throw new DiscourseGuzzleException($e->getMessage(), $e->getCode());
+            throw new DiscourseGuzzleException($e->getMessage(), $e->getStatusCode());
         }
 
     }
