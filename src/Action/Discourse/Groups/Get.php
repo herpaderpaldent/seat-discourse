@@ -26,8 +26,8 @@ class Get
         try {
             $response = $client->request('GET', getenv('DISCOURSE_URL') . '/groups/search.json', [
                 'headers' => [
-                    'api_key' => getenv('DISCOURSE_API_KEY'),
-                    'api_username' => getenv('DISCOURSE_API_USERNAME'),
+                    'api-key' => getenv('DISCOURSE_API_KEY'),
+                    'api-username' => getenv('DISCOURSE_API_USERNAME'),
                 ],
             ]);
 
