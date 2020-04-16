@@ -40,7 +40,7 @@ class Delete
             abort(500, 'Something went wrong at deleting group');
         } catch (GuzzleException $e) {
 
-            throw new DiscourseGuzzleException($e->getMessage(), $e->getCode());
+            throw new DiscourseGuzzleException($e->getMessage(), $e->getStatusCode());
         }
 
     }
