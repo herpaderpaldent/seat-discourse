@@ -26,13 +26,13 @@ class Create
         try {
             $response = $client->request('POST', getenv('DISCOURSE_URL') . '/admin/groups', [
                 'form_params' => [
-                    'group[name]' => $groupnam
+                    'group[name]' => $groupname
                 ],
                 'headers' => [
                     'api-key' => getenv('DISCOURSE_API_KEY'),
                     'api-username' => getenv('DISCOURSE_API_USERNAME')
                 ],
-            ]);,
+            ]);
 
             if (200 === $response->getStatusCode()) {
 
