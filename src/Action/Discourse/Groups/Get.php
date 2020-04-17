@@ -20,14 +20,14 @@ class Get
      * @return \Illuminate\Support\Collection
      * @throws \Herpaderpaldent\Seat\SeatDiscourse\Exceptions\DiscourseGuzzleException
      */
-    public function execute() : Collection
+    public function execute(): Collection
     {
         $client = new Client();
         try {
             $response = $client->request('GET', getenv('DISCOURSE_URL') . '/groups/search.json', [
                 'headers' => [
-                    'api_key' => getenv('DISCOURSE_API_KEY'),
-                    'api_username' => getenv('DISCOURSE_API_USERNAME'),
+                    'api-key' => getenv('DISCOURSE_API_KEY'),
+                    'api-username' => getenv('DISCOURSE_API_USERNAME'),
                 ],
             ]);
 

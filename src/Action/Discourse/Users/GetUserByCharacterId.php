@@ -19,8 +19,8 @@ class GetUserByCharacterId
         try {
             $response = $client->request('GET', getenv('DISCOURSE_URL') . '/users/by-external/' . $id . '.json', [
                 'headers' => [
-                    'api_key' => getenv('DISCOURSE_API_KEY'),
-                    'api_username' => getenv('DISCOURSE_API_USERNAME'),
+                    'api-key' => getenv('DISCOURSE_API_KEY'),
+                    'api-username' => getenv('DISCOURSE_API_USERNAME'),
                 ],
             ]);
 
