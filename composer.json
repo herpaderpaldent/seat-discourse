@@ -22,7 +22,8 @@
         "cviebrock/discourse-php": "^0.9.3",
         "laravel/framework": "5.5.*",
         "eveseat/web": "3.0.*",
-        "ext-json": "*"
+        "ext-json": "*",
+        "guzzlehttp/guzzle": "^6.5"
     },
     "autoload": {
         "psr-4": {
