@@ -84,9 +84,9 @@ class Logout extends SeatDiscourseJobBase
 
             try {
                 $response = $this->client->request('POST', getenv('DISCOURSE_URL') . '/admin/users/' . $this->discourse_user_id . '/log_out', [
-                    'form_params' => [
-                        'api_key' => getenv('DISCOURSE_API_KEY'),
-                        'api_username' => getenv('DISCOURSE_API_USERNAME'),
+                    'headers' => [
+                        'api-key' => getenv('DISCOURSE_API_KEY'),
+                        'api-username' => getenv('DISCOURSE_API_USERNAME'),
                     ],
                 ]);
 
@@ -108,9 +108,9 @@ class Logout extends SeatDiscourseJobBase
         $uri = sprintf('%s/users/by-external/%d.json', getenv('DISCOURSE_URL'), $this->main_character->character_id);
 
         $response = $this->client->request('GET', $uri, [
-            'query' => [
-                'api_key' => getenv('DISCOURSE_API_KEY'),
-                'api_username' => getenv('DISCOURSE_API_USERNAME'),
+            'headers' => [
+                'api-key' => getenv('DISCOURSE_API_KEY'),
+                'api-username' => getenv('DISCOURSE_API_USERNAME'),
             ],
         ]);
 

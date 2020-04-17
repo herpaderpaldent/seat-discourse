@@ -26,9 +26,11 @@ class Create
         try {
             $response = $client->request('POST', getenv('DISCOURSE_URL') . '/admin/groups', [
                 'form_params' => [
-                    'api_key' => getenv('DISCOURSE_API_KEY'),
-                    'api_username' => getenv('DISCOURSE_API_USERNAME'),
                     'group[name]' => $groupname,
+                ],
+                'headers' => [
+                    'api-key' => getenv('DISCOURSE_API_KEY'),
+                    'api-username' => getenv('DISCOURSE_API_USERNAME'),
                 ],
             ]);
 
