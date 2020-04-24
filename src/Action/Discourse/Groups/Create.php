@@ -20,15 +20,17 @@ class Create
      * @return string
      * @throws \Herpaderpaldent\Seat\SeatDiscourse\Exceptions\DiscourseGuzzleException
      */
-    public function execute(String $groupname) : string
+    public function execute(string $groupname): string
     {
         $client = new Client();
         try {
             $response = $client->request('POST', getenv('DISCOURSE_URL') . '/admin/groups', [
                 'form_params' => [
-                    'api_key' => getenv('DISCOURSE_API_KEY'),
-                    'api_username' => getenv('DISCOURSE_API_USERNAME'),
                     'group[name]' => $groupname,
+                ],
+                'headers' => [
+                    'api-key' => getenv('DISCOURSE_API_KEY'),
+                    'api-username' => getenv('DISCOURSE_API_USERNAME'),
                 ],
             ]);
 
