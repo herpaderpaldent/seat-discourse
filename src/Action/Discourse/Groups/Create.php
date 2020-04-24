@@ -43,7 +43,7 @@ class Create
             abort(500, 'Something went wrong at /admin/groups');
         } catch (GuzzleException $e) {
 
-            throw new DiscourseGuzzleException($e->getMessage(), $e->getStatusCode());
+            throw new DiscourseGuzzleException($e->getMessage(), $e->getCode());
         }
 
     }
