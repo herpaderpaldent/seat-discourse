@@ -178,7 +178,7 @@ class SsoController extends Controller
 
         foreach ($this->user->group->users as $user){
             if (is_null($user->refresh_token))
-                return redirect()->route('profile.view')->with('error', 'One of your characters is missing its refresh token. Please login with him again');
+                return redirect()->route('profile.view')->with('error', 'One of your characters is missing its refresh token. Please login with that character again');
         }
 
         if (! ($this->sso->validatePayload($payload = $request->get('sso'), $request->get('sig')))) {
