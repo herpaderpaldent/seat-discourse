@@ -192,7 +192,7 @@ class SsoController extends Controller
             $this->buildExtraParameters()
         );
 
-        return redirect(str_finish(getenv('DISCOURSE_URL'), '/') . 'session/sso_login?' . $query);
+        return redirect(str_finish(config('seatdiscourse.config.DISCOURSE_URL'), '/') . 'session/sso_login?' . $query);
     }
 
     /**

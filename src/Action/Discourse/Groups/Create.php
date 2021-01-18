@@ -24,13 +24,13 @@ class Create
     {
         $client = new Client();
         try {
-            $response = $client->request('POST', getenv('DISCOURSE_URL') . '/admin/groups', [
+            $response = $client->request('POST', config('seatdiscourse.config.DISCOURSE_URL') . '/admin/groups', [
                 'form_params' => [
                     'group[name]' => $groupname,
                 ],
                 'headers' => [
-                    'api-key' => getenv('DISCOURSE_API_KEY'),
-                    'api-username' => getenv('DISCOURSE_API_USERNAME'),
+                    'api-key' => config('seatdiscourse.config.DISCOURSE_API_KEY'),
+                    'api-username' => config('seatdiscourse.config.DISCOURSE_API_USERNAME'),
                 ],
             ]);
 

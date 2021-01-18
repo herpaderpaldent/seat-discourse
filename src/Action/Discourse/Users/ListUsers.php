@@ -20,14 +20,14 @@ class ListUsers
     {
         $client = new Client();
         try {
-            $response = $client->request('GET', getenv('DISCOURSE_URL') . '/admin/users/list/active.json', [
+            $response = $client->request('GET', config('seatdiscourse.config.DISCOURSE_URL') . '/admin/users/list/active.json', [
                 'query' => [
                     'order' => 'topics_entered',
                     'show_emails' => 'true',
                 ],
                 'headers' => [
-                    'api-key' => getenv('DISCOURSE_API_KEY'),
-                    'api-username' => getenv('DISCOURSE_API_USERNAME'),
+                    'api-key' => config('seatdiscourse.config.DISCOURSE_API_KEY'),
+                    'api-username' => config('seatdiscourse.config.DISCOURSE_API_USERNAME'),
                 ],
             ]);
 

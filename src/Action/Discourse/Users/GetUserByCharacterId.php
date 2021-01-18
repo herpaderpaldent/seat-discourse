@@ -17,10 +17,10 @@ class GetUserByCharacterId
     {
         $client = new Client();
         try {
-            $response = $client->request('GET', getenv('DISCOURSE_URL') . '/users/by-external/' . $id . '.json', [
+            $response = $client->request('GET', config('seatdiscourse.config.DISCOURSE_URL') . '/users/by-external/' . $id . '.json', [
                 'headers' => [
-                    'api-key' => getenv('DISCOURSE_API_KEY'),
-                    'api-username' => getenv('DISCOURSE_API_USERNAME'),
+                    'api-key' => config('seatdiscourse.config.DISCOURSE_API_KEY'),
+                    'api-username' => config('seatdiscourse.config.DISCOURSE_API_USERNAME'),
                 ],
             ]);
 

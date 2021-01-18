@@ -1,3 +1,6 @@
+# Version 1.0.2
+writing .env variables into config in order to allow caching of config.
+
 # Version 1.0.1
 This version is a fix for logout job. It was bad designed as it resulted in a closure exception. This fix was provided by @warlof. Thank you very much.
 * Added Style CI to repo.

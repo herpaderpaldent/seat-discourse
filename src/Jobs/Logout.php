@@ -83,10 +83,10 @@ class Logout extends SeatDiscourseJobBase
             $this->beforeStart();
 
             try {
-                $response = $this->client->request('POST', getenv('DISCOURSE_URL') . '/admin/users/' . $this->discourse_user_id . '/log_out', [
+                $response = $this->client->request('POST', config('seatdiscourse.config.DISCOURSE_URL') . '/admin/users/' . $this->discourse_user_id . '/log_out', [
                     'headers' => [
-                        'api-key' => getenv('DISCOURSE_API_KEY'),
-                        'api-username' => getenv('DISCOURSE_API_USERNAME'),
+                        'api-key' => config('seatdiscourse.config.DISCOURSE_API_KEY'),
+                        'api-username' => config('seatdiscourse.config.DISCOURSE_API_USERNAME'),
                     ],
                 ]);
 
@@ -105,12 +105,12 @@ class Logout extends SeatDiscourseJobBase
     {
         $this->client = new Client();
 
-        $uri = sprintf('%s/users/by-external/%d.json', getenv('DISCOURSE_URL'), $this->main_character->character_id);
+        $uri = sprintf('%s/users/by-external/%d.json', config('seatdiscourse.config.DISCOURSE_URL'), $this->main_character->character_id);
 
         $response = $this->client->request('GET', $uri, [
             'headers' => [
-                'api-key' => getenv('DISCOURSE_API_KEY'),
-                'api-username' => getenv('DISCOURSE_API_USERNAME'),
+                'api-key' => config('seatdiscourse.config.DISCOURSE_API_KEY'),
+                'api-username' => config('seatdiscourse.config.DISCOURSE_API_USERNAME'),
             ],
         ]);
 
